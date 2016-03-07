@@ -1,0 +1,24 @@
+*** Starting uWSGI 2.0.12 (64bit) on [Mon Mar  7 13:02:35 2016] ***
+compiled with version: 4.2.1 Compatible Apple LLVM 7.0.2 (clang-700.1.81) on 07 March 2016 11:40:13
+os: Darwin-14.5.0 Darwin Kernel Version 14.5.0: Tue Sep  1 21:23:09 PDT 2015; root:xnu-2782.50.1~1/RELEASE_X86_64
+nodename: engine.local
+machine: x86_64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 4
+current working directory: /Users/engine/oto/server/otoserver
+writing pidfile to /tmp/project-master.pid
+detected binary path: /usr/local/bin/uwsgi
+cannot setgid() as non-root user
+*** Starting uWSGI 2.0.12 (64bit) on [Mon Mar  7 13:03:23 2016] ***
+compiled with version: 4.2.1 Compatible Apple LLVM 7.0.2 (clang-700.1.81) on 07 March 2016 11:40:13
+os: Darwin-14.5.0 Darwin Kernel Version 14.5.0: Tue Sep  1 21:23:09 PDT 2015; root:xnu-2782.50.1~1/RELEASE_X86_64
+nodename: engine.local
+machine: x86_64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 4
+current working directory: /Users/engine/oto/server/otoserver
+writing pidfile to /tmp/project-master.pid
+detected binary path: /usr/local/bin/uwsgi
+cannot setgid() as non-root user

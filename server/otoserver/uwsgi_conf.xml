@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<uwsgi>
+  <socket>:8077</socket>
+  <chdir>.</chdir>
+  <module>otoserver.wsgi</module>
+  <processes>4</processes>
+  <!-- 进程数 -->
+  <daemonize>uwsgi.log</daemonize>
+</uwsgi>
