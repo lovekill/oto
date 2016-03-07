@@ -8,12 +8,14 @@ reload(sys)
 sys.setdefaultencoding('utf-8')
 # Create your models here.
 class Person(models.Model):
+    USER_TYPE=((1,'商户'),(2,'普通用户'))
     userid=models.AutoField(primary_key=True)
     userName=models.CharField('用户名',max_length=16)
     password=models.CharField('密码',max_length=60)
     realName=models.CharField('姓名',max_length=60,default='')
     phoneNumber=models.CharField('电话',max_length=13)
     createTime=models.DateTimeField("创建时间",auto_now_add=True,editable=False)
+    userType=models.IntegerField('用户类型',default=1)
     def __str__(self):
         return self.userName
 class Shop(models.Model):
