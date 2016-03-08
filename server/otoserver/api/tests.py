@@ -1,6 +1,7 @@
 #!encoding=utf-8
 from django.test import TestCase,Client
 from models import Person
+from . import views
 import json
 
 # Create your tests here.
@@ -17,4 +18,12 @@ class ApiTestCase(TestCase):
         c = Client()
         response = c.get('/oto/regist?userName=cheng&password=12345&realName=Jone&phoneNumber=13268236246&userType=1')
         jsonData=json.loads(response.content)
+        person=views.getPersonByName('cheng')
+        self.assertEqual(person.realName,'Jone')
+        self.assertEqual(jsonData['code'],0)
+    def test_login_user(self):
+        self.test_regist_user()
+        c=Client()
+        response = c.get('/oto/login?userName=cheng&password=12345')
+        jsonData = json.loads(response.content)
         self.assertEqual(jsonData['code'],0)

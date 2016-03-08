@@ -40,12 +40,18 @@ def addShop(request):
     shop.latitude=request.POST.get('latitude')
     shop.lontitude=request.POST.get('lontitude')
     shop.subtrackPrice=request.POST.get('subtrackPrice')
+    shop.save()
     return responseJson(0,"add success")
 def addMenu(request):
     menu = Menu()
     menu.menuName=request.POST.get('menu')
     shopid=request.POST.get('shopid')
     menu.price=request.POST.get('price')
+    shop = getShopById(shopid)
+    if shop is None:
+        return responseJson(1,'shop not exist')
+    menu.shop=shop
+    menu.save()
     return responseJson(0,'add success')
 def regist(request):
     person = Person()
@@ -54,19 +60,22 @@ def regist(request):
     if p!=None:
         return responseJson(1,"该帐号已经注册")
     requestPassword=request.GET.get('password')
-    person.password=md5.new().update(requestPassword)
+    person.password=getMD5(requestPassword)
     person.realName=request.GET.get('realName')
     person.phoneNumber=request.GET.get('phoneNumber')
     person.userType=request.GET.get('userType')
+    person.save()
     return responseJson(0,'registSuccess')
 def login(request):
     userName=request.GET.get('userName')
     password=request.GET.get('password')
     user = getPersonByName(userName)
-    if user!=None:
-        if md5.new().update(password) == user.password:
+    if user is not None:
+        if getMD5(password) == user.password:
             dict={"userid":user.userid,"userName":user.userName,"realName":user.realName,"userTyp":user.userType,"phoneNumber":user.phoneNumber}
             return responseJson(0,dict)
+        else:
+            return responseJson(2,"userName or password error")
     return responseJson(1,"登陆失败")
 
 def getShopById(shopId):
@@ -83,3 +92,7 @@ def getPersonByName(name):
 def responseJson(code,data):
     dict={'code':code,'data':data}
     return HttpResponse(json.dumps(dict))
+def getMD5(src):
+    m = md5.new()
+    m.update(src)
+    return m.hexdigest()
