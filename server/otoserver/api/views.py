@@ -4,6 +4,7 @@ from django.http import HttpResponse
 from django.core import serializers
 import json
 import uuid
+import md5
 from .models import Shop,Menu,Person
 
 # Create your views here.
@@ -32,8 +33,7 @@ def addShop(request):
     shop.limitAmount=request.POST.get('limitAmount')
     shomaxAmount=request.POST.get('maxAmount')
     file_content = ContentFile(request.FILES['img'].read())  
-    img = ImageStore(name = uuid.uuid1(), img =
-    request.FILES['img'])  
+    img = ImageStore(name = uuid.uuid1(), img =request.FILES['img'])  
     img.save()
     shop.shopImage=img
     shop.save()
@@ -50,13 +50,35 @@ def addMenu(request):
 def regist(request):
     person = Person()
     person.userName=request.GET.get('userName')
-    person.password=request.GET.get('password')
+    p = getPersonByName(person.userName)
+    if p!=None:
+        return responseJson(1,"该帐号已经注册")
+    requestPassword=request.GET.get('password')
+    person.password=md5.new().update(requestPassword)
     person.realName=request.GET.get('realName')
     person.phoneNumber=request.GET.get('phoneNumber')
     person.userType=request.GET.get('userType')
+    return responseJson(0,'registSuccess')
+def login(request):
+    userName=request.GET.get('userName')
+    password=request.GET.get('password')
+    user = getPersonByName(userName)
+    if user!=None:
+        if md5.new().update(password) == user.password:
+            dict={"userid":user.userid,"userName":user.userName,"realName":user.realName,"userTyp":user.userType,"phoneNumber":user.phoneNumber}
+            return responseJson(0,dict)
+    return responseJson(1,"登陆失败")
+
 def getShopById(shopId):
-    shop = Shop.obejcts.get(shopid=shopId)
-    return shop
+    shopSet = Shop.obejcts.filter(shopid=shopId)
+    if shopSet.count()==1:
+        return shopSet.get(shopid=shopId)
+    return None
+def getPersonByName(name):
+    personSet = Person.objects.filter(userName=name)
+    if personSet.count()==1:
+        return personSet.get(userName=name)
+    return None
     
 def responseJson(code,data):
     dict={'code':code,'data':data}
