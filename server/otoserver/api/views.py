@@ -59,7 +59,7 @@ def login(request):
     user = getPersonByName(userName)
     if user is not None:
         if getMD5(password) == user.password:
-            dict={"userid":user.userid,"userName":user.userName,"realName":user.realName,"userTyp":user.userType,"phoneNumber":user.phoneNumber}
+            dict={"userid":user.userid,"userName":user.userName,"userTyp":user.userType}
             return responseJson(0,dict)
         else:
             return responseJson(2,"userName or password error")

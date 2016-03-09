@@ -12,8 +12,6 @@ class Person(models.Model):
     userid=models.AutoField(primary_key=True)
     userName=models.CharField('用户名',max_length=16)
     password=models.CharField('密码',max_length=60)
-    realName=models.CharField('姓名',max_length=60,default='')
-    phoneNumber=models.CharField('电话',max_length=13)
     createTime=models.DateTimeField("创建时间",auto_now_add=True,editable=False)
     userType=models.IntegerField('用户类型',default=1)
     def __str__(self):
@@ -51,6 +49,8 @@ class Address(models.Model):
 
     """Docstring for Address. """
     addressid=models.AutoField(primary_key=True)
+    userName=models.CharField(max_length=14,default="")
+    phoneNumber=models.CharField(max_length=13,default='')
     addressName=models.CharField('地址',max_length=200)
     person=models.ForeignKey(Person)
     createTime=models.DateTimeField("创建时间",auto_now_add=True,editable=False)
