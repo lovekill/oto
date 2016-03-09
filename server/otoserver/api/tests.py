@@ -27,3 +27,6 @@ class ApiTestCase(TestCase):
         response = c.get('/oto/login?userName=cheng&password=12345')
         jsonData = json.loads(response.content)
         self.assertEqual(jsonData['code'],0)
+    def test_calcu_lacation(self):
+        dict= views.calcu_location(-30.376393,-114.33879)
+        print dict['location_x']['min']

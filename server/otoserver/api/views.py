@@ -5,25 +5,12 @@ from django.core import serializers
 import json
 import uuid
 import md5
+import math
 from .models import Shop,Menu,Person
 
 # Create your views here.
 def index(request):
     return HttpResponse("hello 我是送外卖的")
-def getShopList(request):
-    shoplist=[]
-    for shop in Shop.objects.all():
-        dict={}
-        dict['shopid']=shop.shopid
-        dict['shopName']=shop.shopName
-        dict['image']=shop.shopImage.__str__()
-        dict['maxAmount']=shop.maxAmount
-        dict['limitAmount']=shop.limitAmount
-        dict['subtrackPrice'] = shop.subtrackPrice
-        dict['phoneNumber'] =shop.phoneNumber
-        dict['address'] =shop.address
-        shoplist.append(dict)
-        return responseJson(0,shoplist)
 def addShop(request):
     shop = Shop()
     shop.shopName=request.POST.get('shopName')
@@ -77,7 +64,21 @@ def login(request):
         else:
             return responseJson(2,"userName or password error")
     return responseJson(1,"登陆失败")
-
+def getShopList(request):
+    latitude = request.GET.get('latitude')
+    lontitude=request.GET.get('lontitude')
+    rangeDict=calcu_location(latitude,lontitude)
+    shopSet = Shop.objects.filter(shopStatus=1).filter(latitude__gte=rangeDict['location_x']['min']).filter(
+            latitude__lte=rangeDict['location_x']['max']).filter(
+                    lontitude__gte=rangeDict['location_y']['min']).filter(
+                            lontitude__lte=rangeDict['location_y']['max'])
+    shopList=[]
+    for shop in shopSet:
+        shopDict={"shopid":shop.shopid,"shopName":shop.shopName,"shopImage":shop.shopImage,
+                "phoneNumber":shop.phoneNumber,"address":shop.address,"limitAmount":shop.limitAmount,
+                "maxAmount":shop.maxAmount,"subtrackPrice":shop.subtrackPrice}
+        shopList.append(shopDict)
+    return responseJson(0,shopLis)
 def getShopById(shopId):
     shopSet = Shop.obejcts.filter(shopid=shopId)
     if shopSet.count()==1:
@@ -88,7 +89,8 @@ def getPersonByName(name):
     if personSet.count()==1:
         return personSet.get(userName=name)
     return None
-    
+def generateOrder(request):
+    return responseJson(0,"")
 def responseJson(code,data):
     dict={'code':code,'data':data}
     return HttpResponse(json.dumps(dict))
@@ -96,3 +98,15 @@ def getMD5(src):
     m = md5.new()
     m.update(src)
     return m.hexdigest()
+def calcu_location(location_x, location_y, r=2):
+    lat_range = 180 / math.pi * r / 6372.797  # 里面的 1 就代表搜索 1km 之内，单位km
+    long_r = lat_range / math.cos(location_x * math.pi / 180)
+    max_lat = location_x + lat_range  # 最大纬度
+    min_lat = location_x - lat_range  # 最小纬度
+    max_long = location_y + long_r  # 最大经度
+    min_long = location_y - long_r  # 最小经度
+     
+    range_xy = {}
+    range_xy['location_x'] = {'min':min_lat, 'max':max_lat}
+    range_xy['location_y'] = {'min':min_long, 'max':max_long}
+    return range_xy
