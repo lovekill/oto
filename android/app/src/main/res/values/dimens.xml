@@ -8,4 +8,6 @@
     <dimen name="navigation_drawer_width">240dp</dimen>
     <dimen name="edit_height">48dp</dimen>
     <dimen name="login_text_weight">60dp</dimen>
+    <dimen name="shop_image_height">60dp</dimen>
+    <dimen name="shop_image_weight">100dp</dimen>
 </resources>
