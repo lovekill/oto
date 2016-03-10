@@ -18,6 +18,7 @@
         <EditText
                 style="@style/edit_text"
                 android:layout_width="match_parent"
+                android:hint="请输入用户名"
                 android:layout_height="match_parent"/>
     </LinearLayout>
 
@@ -34,6 +35,8 @@
 
         <EditText
                 style="@style/edit_text"
+                android:hint="请输入密码"
+                android:inputType="textPassword"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
     </LinearLayout>
@@ -60,6 +63,7 @@
 
         <Button
                 android:text="注册"
+                android:id="@+id/registButton"
                 android:layout_width="match_parent"
                 android:textColor="@color/white"
                 android:textSize="20sp"

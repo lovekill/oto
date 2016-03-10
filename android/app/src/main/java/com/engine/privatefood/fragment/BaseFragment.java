@@ -3,6 +3,8 @@ package com.engine.privatefood.fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
@@ -35,11 +37,9 @@ public class BaseFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-//        MobclickAgent.onPageStart(TAG); //统计页面
         getView().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dismissKeyPad(view);
             }
         });
     }
@@ -65,11 +65,8 @@ public class BaseFragment extends Fragment {
 
         return ((BaseActivity) getActivity());
     }
-
-    @Override
-    public void onPause() {
-        super.onResume();
-//        MobclickAgent.onPageEnd(TAG); //统计页面
+    public ActionBar getActionBar() {
+        return ((AppCompatActivity) getActivity()).getSupportActionBar();
     }
 
     public void back() {
@@ -80,13 +77,13 @@ public class BaseFragment extends Fragment {
         ((BaseActivity) getActivity()).appBackFragment();
     }
 
-    @Override
-    public Animation onCreateAnimation(int transit, boolean enter, int nextAnim) {
-        Log.e(TAG, "transit=" + transit + ",enter=" + enter + ",nextAnim=" + nextAnim);
-        if (enter) {
-            return AnimationUtils.loadAnimation(getActivity(), R.anim.in_from_right);
-        } else {
-            return AnimationUtils.loadAnimation(getActivity(), R.anim.out_to_right);
-        }
-    }
+//    @Override
+//    public Animation onCreateAnimation(int transit, boolean enter, int nextAnim) {
+//        Log.e(TAG, "transit=" + transit + ",enter=" + enter + ",nextAnim=" + nextAnim);
+//        if (enter) {
+//            return AnimationUtils.loadAnimation(getActivity(), R.anim.in_from_right);
+//        } else {
+//            return AnimationUtils.loadAnimation(getActivity(), R.anim.out_to_right);
+//        }
+//    }
 }

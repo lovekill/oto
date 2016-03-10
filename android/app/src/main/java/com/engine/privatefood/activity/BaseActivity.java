@@ -3,6 +3,7 @@ package com.engine.privatefood.activity;
 import android.annotation.TargetApi;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -52,7 +53,7 @@ public class BaseActivity extends AppCompatActivity{
     }
 
 
-    public void addFragment(BaseFragment fragment){
+    public void addFragment(Fragment fragment){
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction ft = fragmentManager.beginTransaction();
                 ft.add(android.R.id.content,fragment,fragment.getClass().getSimpleName());
@@ -60,7 +61,7 @@ public class BaseActivity extends AppCompatActivity{
         ft.commit();
     }
 
-    public void addFragment(BaseFragment fragment,int contentId){
+    public void addFragment(Fragment fragment,int contentId){
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction ft = fragmentManager.beginTransaction();
         ft.add(contentId,fragment,fragment.getClass().getSimpleName());
