@@ -6,10 +6,13 @@ import json
 import uuid
 import md5
 import math
+import logging
 from .models import Shop,Menu,Person
 
+logger = logging.getLogger('django')
 # Create your views here.
 def index(request):
+    logger.info("我只是一个测试")
     return HttpResponse("hello 我是送外卖的")
 def addShop(request):
     shop = Shop()
@@ -44,15 +47,14 @@ def regist(request):
     person = Person()
     person.userName=request.GET.get('userName')
     p = getPersonByName(person.userName)
-    if p!=None:
+    if p is not None:
         return responseJson(1,"该帐号已经注册")
     requestPassword=request.GET.get('password')
     person.password=getMD5(requestPassword)
-    person.realName=request.GET.get('realName')
-    person.phoneNumber=request.GET.get('phoneNumber')
     person.userType=request.GET.get('userType')
     person.save()
-    return responseJson(0,'registSuccess')
+    dict={"userid":person.userid,"userName":person.userName,"userType":person.userType}
+    return responseJson(0,dict)
 def login(request):
     userName=request.GET.get('userName')
     password=request.GET.get('password')

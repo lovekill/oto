@@ -23,6 +23,11 @@ android {
         versionCode 1
         versionName "1.0"
     }
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
     lintOptions {
         abortOnError false
     }
@@ -30,10 +35,22 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_6
         targetCompatibility JavaVersion.VERSION_1_6
     }
+    signingConfigs{
+       sigin{
+           storeFile file("android.keystore")
+           storePassword="kdal254379"
+           keyAlias="android.keystore"
+           keyPassword="kdal254379"
+       }
+    }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig=signingConfigs.sigin
+        }
+        debug{
+            signingConfig=signingConfigs.sigin
         }
     }
 }

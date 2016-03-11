@@ -6,7 +6,5 @@ package com.engine.privatefood.bean;
 public class UserBean {
     public int userid ;
     public String userName ;
-    public String realName ;
-    public String phoneNumber;
     public int userType;
 }

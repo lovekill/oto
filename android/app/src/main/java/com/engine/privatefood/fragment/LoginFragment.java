@@ -9,6 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -19,6 +21,15 @@ import com.engine.privatefood.activity.RegistActivity;
  * Created by engine on 16/3/10.
  */
 public class LoginFragment extends BaseFragment {
+
+    @Bind(R.id.userName)
+    EditText userName;
+    @Bind(R.id.password)
+    EditText password;
+    @Bind(R.id.login)
+    Button login;
+    @Bind(R.id.registButton)
+    Button registButton;
 
     @Nullable
     @Override
@@ -42,13 +53,23 @@ public class LoginFragment extends BaseFragment {
     }
 
     @OnClick(R.id.registButton)
-    public void regist(View view){
-        Intent intent = new Intent(getActivity(),RegistActivity.class);
+    public void regist(View view) {
+        Intent intent = new Intent(getActivity(), RegistActivity.class);
         startActivity(intent);
     }
+
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         ButterKnife.unbind(this);
+    }
+    public boolean validata(){
+        String name = userName.getText().toString().trim();
+        String p = password.getText().toString();
+        if (name.length()==0||p.length()==0){
+            Toast.makeText(getActivity(),"用户名和密码不能为空",Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
     }
 }

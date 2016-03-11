@@ -7,7 +7,7 @@ import json
 # Create your tests here.
 class ApiTestCase(TestCase):
     def setUp(self):
-        Person.objects.create(userName="engineli",password="123456",realName="李红波",phoneNumber="13268236246",userType=1)  
+        Person.objects.create(userName="engineli",password="123456",userType=1)  
     def test_person_get(self):
         engine=Person.objects.get(userName='engineli')
         self.assertEqual(engine.userName,'engineli')
@@ -16,10 +16,9 @@ class ApiTestCase(TestCase):
         response=c.get('/oto/index')
     def test_regist_user(self):
         c = Client()
-        response = c.get('/oto/regist?userName=cheng&password=12345&realName=Jone&phoneNumber=13268236246&userType=1')
+        response = c.get('/oto/regist?userName=cheng&password=12345&userType=1')
         jsonData=json.loads(response.content)
         person=views.getPersonByName('cheng')
-        self.assertEqual(person.realName,'Jone')
         self.assertEqual(jsonData['code'],0)
     def test_login_user(self):
         self.test_regist_user()

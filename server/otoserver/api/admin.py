@@ -3,7 +3,7 @@ from .models import Person,Shop,Menu,OtoOrder,Address
 
 # Register your models here.
 class PersonAdmin(admin.ModelAdmin):
-    list_display=('userName','phoneNumber','createTime')
+    list_display=('userName','createTime')
 class ShopAdmin(admin.ModelAdmin):
     list_display=('shopName','bossName','phoneNumber','createTime','shopImage','shopStatus')
 class MenuAdmin(admin.ModelAdmin):

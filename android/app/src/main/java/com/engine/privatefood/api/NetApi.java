@@ -36,7 +36,7 @@ public abstract class NetApi extends AsyncTask<String, String, String> implement
 
     //http://sportservicetest.y6.cn/
       //  protected static String BASE_URL = "http://test-spservicetest.y6.cn/";
-        protected static String BASE_URL = "http://service.herenow.cc/";
+        protected static String BASE_URL = "http://192.168.2.169:8061/oto/";
      //protected static String BASE_URL = "http://spservicetest.y6.cn/";
     // protected static String BASE_URL = "http://spservicetest.y6.cn/";
     //protected static String BASE_URL = "http://sportservicetest.y6.cn/";
