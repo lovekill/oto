@@ -9,5 +9,6 @@ urlpatterns=[
             url(r'^getshopList$',views.getShopList,name="getShopList"),
             url(r'^generateorder$',views.generateOrder,name="generateOrder"),
             url(r'^addAddress$',views.addAddress,name="addAddress"),
-            url(r'^getAddressList$',views.getAddressList,name="getAddressList")
+            url(r'^getAddressList$',views.getAddressList,name="getAddressList"),
+            url(r'^getMenuList$',views.getMenuList,name="getMenuList")
         ]

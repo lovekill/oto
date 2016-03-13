@@ -1,6 +1,7 @@
 package com.engine.privatefood;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.ActionBar;
@@ -23,6 +24,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import com.baidu.location.*;
 import com.engine.privatefood.activity.BaseActivity;
+import com.engine.privatefood.activity.MenuActivity;
 import com.engine.privatefood.adpater.ShopAdatper;
 import com.engine.privatefood.api.otoapi.LoadShopApi;
 import com.engine.privatefood.bean.Location;
@@ -89,6 +91,10 @@ public class MainActivity extends BaseActivity
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                     ShopBean shopBean = adatper.getItem(i);
+                    Intent intent = new Intent(MainActivity.this, MenuActivity.class);
+                    intent.putExtra(MenuActivity.SHOPNAME,shopBean.shopName);
+                    intent.putExtra(MenuActivity.SHOPID,shopBean.shopid);
+                    startActivity(intent);
                 }
             });
     }

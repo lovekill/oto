@@ -12,7 +12,7 @@ from .models import Shop,Menu,Person,Address
 logger = logging.getLogger('django')
 # Create your views here.
 def index(request):
-    logger.info("我只是一个测试")
+    print request.get_host()
     return HttpResponse("hello 我是送外卖的")
 def addShop(request):
     shop = Shop()
@@ -76,12 +76,24 @@ def getShopList(request):
                             lontitude__lte=rangeDict['location_y']['max'])
     shopList=[]
     for shop in shopSet:
-        imagepath = "http://api.grayweb.cn:8061/{0}".format(shop.shopImage.__str__());
+        imagepath = "http://{0}/{1}".format(request.get_host(),shop.shopImage.__str__());
         shopDict={"shopid":shop.shopid,"shopName":shop.shopName,"shopImage":imagepath,
                 "phoneNumber":shop.phoneNumber,"address":shop.address,"limitAmount":shop.limitAmount,
                 "maxAmount":shop.maxAmount,"subtrackPrice":shop.subtrackPrice}
         shopList.append(shopDict)
     return responseJson(0,shopList)
+def getMenuList(request):
+    shopid = request.GET.get("shopid")
+    shop = getShopById(shopid)
+    if shop is not None:
+        menuSet = Menu.objects.filter(shop=shop)
+        menulist =[] 
+        for menu in menuSet:
+            imagepath = "http://{0}/{1}".format(request.get_host(),menu.menuImage.__str__());
+            dict = {"menuId":menu.menuId,"menuName":menu.menuName,"menuImage":imagepath,"price":menu.price}
+            menulist.append(dict)
+            return responseJson(0,menulist)
+    return responseJson(1,"please input shopid")
 def addAddress(request):
     name = request.GET.get("name")
     phoneNumber = request.GET.get("phoneNumber")
@@ -112,7 +124,7 @@ def getAddressList(request):
         return responseJson(0,"请先登录")
 
 def getShopById(shopId):
-    shopSet = Shop.obejcts.filter(shopid=shopId)
+    shopSet = Shop.objects.filter(shopid=shopId)
     if shopSet.count()==1:
         return shopSet.get(shopid=shopId)
     return None

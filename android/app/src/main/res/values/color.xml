@@ -6,4 +6,7 @@
     <color name="white">#FFFFFF</color>
     <color name="red_normal">#EC407A</color>
     <color name="red_press">#D81B60</color>
+    <color name="yellow">#FF9100</color>
+    <color name="red">#FF3D00</color>
+    <color name="green">#66BB6A</color>
 </resources>
