@@ -1,6 +1,7 @@
 package com.engine.privatefood.fragment;
 
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
@@ -15,7 +16,10 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.engine.privatefood.R;
+import com.engine.privatefood.UserManager;
 import com.engine.privatefood.activity.RegistActivity;
+import com.engine.privatefood.api.otoapi.LoginApi;
+import com.squareup.otto.Subscribe;
 
 /**
  * Created by engine on 16/3/10.
@@ -58,6 +62,25 @@ public class LoginFragment extends BaseFragment {
         startActivity(intent);
     }
 
+
+    @OnClick(R.id.login)
+    public void login(View view){
+       if (validata()){
+           LoginApi api = new LoginApi();
+           api.userName=userName.getText().toString().trim();
+           api.password=password.getText().toString();
+           api.execute();
+       }
+    }
+
+    @Subscribe
+    public void onLoginResponse(LoginApi api){
+       if (api.getModel()!=null){
+           UserManager.getInstance(getActivity()).saveUser(api.getModel());
+           getBaseActivty().finish();
+       }
+
+    }
     @Override
     public void onDestroyView() {
         super.onDestroyView();

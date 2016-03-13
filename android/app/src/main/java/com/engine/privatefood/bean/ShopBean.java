@@ -6,6 +6,7 @@ package com.engine.privatefood.bean;
 public class ShopBean {
     public int shopid ;
     public String shopName ;
+    public String shopImage ;
     public String phoneNumber;
     public String address ;
     public double latitude ;

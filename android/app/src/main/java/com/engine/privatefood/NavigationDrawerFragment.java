@@ -22,7 +22,9 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
+import com.engine.privatefood.activity.AddressListActivty;
 import com.engine.privatefood.activity.LoginActivity;
+import com.engine.privatefood.bean.UserBean;
 
 /**
  * Fragment used for managing interactions for and presentation of a navigation drawer.
@@ -99,17 +101,34 @@ public class NavigationDrawerFragment extends Fragment {
                 selectItem(position);
             }
         });
+        return mDrawerListView;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        initAdapter();
+    }
+
+    private void initAdapter(){
+        String[] menus ;
+        UserBean bean = UserManager.getInstance(getActivity()).getUser();
+        if (bean==null){
+            menus= new String[]{"登录"};
+        }else {
+            if (bean.userType==1) {
+                menus = new String[]{bean.userName, "我的订单", "我的地址","注销"};
+            }else {
+                menus = new String[]{bean.userName, "我的订单", "我的店铺","注销"};
+            }
+        }
         mDrawerListView.setAdapter(new ArrayAdapter<String>(
                 getActionBar().getThemedContext(),
                 android.R.layout.simple_list_item_activated_1,
                 android.R.id.text1,
-                new String[]{
-                        getString(R.string.title_section1),
-                        getString(R.string.title_section2),
-                        getString(R.string.title_section3),
-                }));
+                menus
+        ));
         mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
-        return mDrawerListView;
     }
 
     public boolean isDrawerOpen() {
@@ -194,9 +213,19 @@ public class NavigationDrawerFragment extends Fragment {
 
     private void selectItem(int position) {
         mCurrentSelectedPosition = position;
-        if (position==0) {
+        if (position==0&&UserManager.getInstance(getActivity()).getUser()==null) {
             Intent intent = new Intent(getActivity(), LoginActivity.class);
             startActivity(intent);
+        }
+        if  (position==3){
+            UserManager.getInstance(getActivity()).clean();
+            initAdapter();
+        }else if (position==2){
+            UserBean user = UserManager.getInstance(getActivity()).getUser();
+            if (user.userType==1){
+                Intent intent = new Intent(getActivity(), AddressListActivty.class);
+                startActivity(intent);
+            }
         }
         if (mDrawerListView != null) {
             mDrawerListView.setItemChecked(position, true);
@@ -242,10 +271,10 @@ public class NavigationDrawerFragment extends Fragment {
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         // If the drawer is open, show the global app actions in the action bar. See also
         // showGlobalContextActionBar, which controls the top-left area of the action bar.
-        if (mDrawerLayout != null && isDrawerOpen()) {
-            inflater.inflate(R.menu.global, menu);
-            showGlobalContextActionBar();
-        }
+//        if (mDrawerLayout != null && isDrawerOpen()) {
+//            inflater.inflate(R.menu.global, menu);
+//            showGlobalContextActionBar();
+//        }
         super.onCreateOptionsMenu(menu, inflater);
     }
 

@@ -9,11 +9,11 @@ import java.util.List;
 /**
  * Created by cat1412266 on 15/7/26.
  */
-public abstract class ColorRunAdapter<T> extends BaseAdapter{
+public abstract class OtoBaseAdapter<T> extends BaseAdapter{
   protected List<T> dataList ;
   protected Context mContext ;
 
-  public ColorRunAdapter(Context mContext, List<T> dataList)  {
+  public OtoBaseAdapter(Context mContext, List<T> dataList)  {
     this.dataList = dataList;
     this.mContext = mContext;
   }

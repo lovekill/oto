@@ -12,7 +12,9 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.engine.privatefood.R;
+import com.engine.privatefood.UserManager;
 import com.engine.privatefood.api.otoapi.RegistApi;
+import com.engine.privatefood.bean.UserBean;
 import com.squareup.otto.Subscribe;
 
 /**
@@ -82,6 +84,10 @@ public class RegistActivity extends BaseActivity {
     }
     @Subscribe
     public void registResponse(RegistApi api){
-        Toast.makeText(this,api.getModel().userName,Toast.LENGTH_SHORT).show();
+        UserBean userBean = api.getModel();
+        if (userBean!=null){
+            UserManager.getInstance(this).saveUser(userBean);
+            finish();
+        }
     }
 }

@@ -1,8 +1,8 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
       xmlns:app="http://schemas.android.com/apk/res-auto">
-    <item android:id="@+id/action_settings"
-          android:title="@string/action_settings"
-          android:icon="@drawable/abc_btn_radio_material"
+    <item android:id="@+id/action_add_address"
+          android:title="@string/add_address"
+          android:icon="@drawable/create_contact"
           android:orderInCategory="100"
           app:showAsAction="ifRoom"/>
 </menu>

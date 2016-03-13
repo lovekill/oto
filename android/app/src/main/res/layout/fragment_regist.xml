@@ -78,7 +78,7 @@
                android:layout_marginTop="20dp"
                android:layout_width="240dp"
                android:id="@+id/doRegist"
-               android:background="@color/red_light"
+               android:background="@drawable/regist_btn"
                android:text="注册"
                android:textColor="#FFFFFF"
                android:layout_gravity="center"

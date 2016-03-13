@@ -3,5 +3,59 @@
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
-
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="20dp"
+            android:layout_height="@dimen/edit_height">
+        <TextView
+                android:text="名字:"
+                style="@style/edit_title"
+                android:layout_width="@dimen/login_text_weight"
+                android:layout_height="match_parent"/>
+        <EditText
+                style="@style/edit_text"
+                android:hint="请输入你的真实名字方便商家联系你"
+                android:id="@+id/userName"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+    </LinearLayout>
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="20dp"
+            android:layout_height="@dimen/edit_height">
+        <TextView
+                android:text="电话号码:"
+                style="@style/edit_title"
+                android:layout_width="@dimen/login_text_weight"
+                android:layout_height="match_parent"/>
+        <EditText
+                style="@style/edit_text"
+                android:hint="请输入你的电话号码"
+                android:id="@+id/phoneNumber"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+    </LinearLayout>
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="20dp"
+            android:layout_height="@dimen/edit_height">
+        <TextView
+                android:text="地址:"
+                style="@style/edit_title"
+                android:layout_width="@dimen/login_text_weight"
+                android:layout_height="match_parent"/>
+        <EditText
+                style="@style/edit_text"
+                android:id="@+id/address"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+    </LinearLayout>
+    <Button android:layout_marginLeft="20dp" android:layout_marginRight="20dp" android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:text="保存"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:id="@+id/save"
+            android:background="@drawable/regist_btn"
+            android:layout_height="48dp"/>
 </LinearLayout>

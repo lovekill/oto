@@ -29,18 +29,16 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 /**
  * Created by cat1412266 on 15/7/26.
  */
 public abstract class NetApi extends AsyncTask<String, String, String> implements IBus {
 
-    //http://sportservicetest.y6.cn/
-      //  protected static String BASE_URL = "http://test-spservicetest.y6.cn/";
-        protected static String BASE_URL = "http://192.168.2.169:8061/oto/";
-     //protected static String BASE_URL = "http://spservicetest.y6.cn/";
-    // protected static String BASE_URL = "http://spservicetest.y6.cn/";
-    //protected static String BASE_URL = "http://sportservicetest.y6.cn/";
-    // protected static String BASE_URL = "http://sportservicetest.y6.cn/";
+    //公司
+//    protected static String BASE_URL = "http://192.168.2.169:8061/oto/";
+    //家里
+    protected static String BASE_URL="http://api.grayweb.cn:8061/oto/";
     protected String TAG = getClass().getSimpleName();
     private OkHttpClient client = new OkHttpClient();
     protected Gson gson;
