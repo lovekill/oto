@@ -155,7 +155,7 @@ def getMD5(src):
     m = md5.new()
     m.update(src)
     return m.hexdigest()
-def calcu_location(location_x, location_y, r=2):
+def calcu_location(location_x, location_y, r=20):
     lat_range = 180 / math.pi * r / 6372.797  # 里面的 1 就代表搜索 1km 之内，单位km
     long_r = lat_range / math.cos(location_x * math.pi / 180)
     max_lat = location_x + lat_range  # 最大纬度

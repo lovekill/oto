@@ -1,14 +1,19 @@
 package com.engine.privatefood.adpater;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.*;
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import com.baidu.mapapi.map.Text;
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
 import com.engine.privatefood.R;
 import com.engine.privatefood.bean.MenuBean;
 import com.squareup.picasso.Picasso;
@@ -29,6 +34,11 @@ public class MenuAdapter extends OtoBaseAdapter<MenuBean> {
 
     private IChoiceMenu listener ;
 
+    public void setRootView(ViewGroup rootView) {
+        this.rootView = rootView;
+    }
+
+    private ViewGroup rootView ;
     public interface IChoiceMenu{
         public void onMenuChoice(MenuBean menuBean);
     }
@@ -49,6 +59,16 @@ public class MenuAdapter extends OtoBaseAdapter<MenuBean> {
         holder.select.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                int[] location = new int[2];
+                view.getLocationOnScreen(location);
+                TextView textView = new TextView(mContext);
+                textView.setText("+1");
+                textView.setTextColor(Color.YELLOW);
+                RelativeLayout.LayoutParams p = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                p.setMargins(location[0],location[1],0,0);
+                rootView.addView(textView,p);
+                Animation animation = AnimationUtils.loadAnimation(mContext,R.anim.out_to_bottom);
+                textView.startAnimation(animation);
                if (listener!=null){
                    listener.onMenuChoice(bean);
                }

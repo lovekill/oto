@@ -36,10 +36,10 @@ import java.util.Map;
 public abstract class NetApi extends AsyncTask<String, String, String> implements IBus {
 
     //公司
-//    protected static String BASE_URL = "http://192.168.2.169:8061/oto/";
+    protected static String BASE_URL = "http://192.168.2.169:8061/oto/";
     //家里
 //    protected static String BASE_URL="http://api.grayweb.cn:8061/oto/";
-    protected static String BASE_URL="http://192.168.1.106:8061/oto/";
+//    protected static String BASE_URL="http://192.168.1.106:8061/oto/";
     protected String TAG = getClass().getSimpleName();
     private OkHttpClient client = new OkHttpClient();
     protected Gson gson;
