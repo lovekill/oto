@@ -2,7 +2,10 @@ package com.engine.privatefood.adpater;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.Rect;
+import android.support.v7.app.ActionBar;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +18,7 @@ import com.baidu.mapapi.map.Text;
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
 import com.engine.privatefood.R;
+import com.engine.privatefood.activity.BaseActivity;
 import com.engine.privatefood.bean.MenuBean;
 import com.squareup.picasso.Picasso;
 
@@ -33,9 +37,10 @@ public class MenuAdapter extends OtoBaseAdapter<MenuBean> {
     }
 
     private IChoiceMenu listener ;
-
-    public void setRootView(ViewGroup rootView) {
+    private ActionBar actionBar ;
+    public void setRootView(ViewGroup rootView,ActionBar actionBar) {
         this.rootView = rootView;
+        this.actionBar=actionBar ;
     }
 
     private ViewGroup rootView ;
@@ -60,15 +65,18 @@ public class MenuAdapter extends OtoBaseAdapter<MenuBean> {
             @Override
             public void onClick(View view) {
                 int[] location = new int[2];
-                view.getLocationOnScreen(location);
+                Rect frame = new Rect();
+                ((BaseActivity)mContext).getWindow().getDecorView().getWindowVisibleDisplayFrame(frame);
+                view.getLocationInWindow(location);
                 TextView textView = new TextView(mContext);
                 textView.setText("+1");
-                textView.setTextColor(Color.YELLOW);
+                textView.setTextColor(Color.WHITE);
+                textView.setGravity(Gravity.CENTER);
+                textView.setBackgroundResource(R.drawable.add_shap);
                 RelativeLayout.LayoutParams p = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-                p.setMargins(location[0],location[1],0,0);
+                p.setMargins(location[0]+view.getMeasuredWidth()/2,location[1]-actionBar.getHeight()-frame.top+view.getMeasuredHeight()/2,0,0);
                 rootView.addView(textView,p);
-                Animation animation = AnimationUtils.loadAnimation(mContext,R.anim.out_to_bottom);
-                textView.startAnimation(animation);
+                YoYo.with(Techniques.SlideOutDown).duration(200).playOn(textView);
                if (listener!=null){
                    listener.onMenuChoice(bean);
                }

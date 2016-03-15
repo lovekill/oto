@@ -21,34 +21,37 @@ public class SelectItemView extends LinearLayout {
     @Bind(R.id.price)
     TextView price;
     MenuBean bean;
+    @Bind(R.id.delete)
+    Button delete;
 
     public void setListener(ISelectListener listener) {
         this.listener = listener;
     }
 
-    private  ISelectListener listener;
+    private ISelectListener listener;
 
-    public interface ISelectListener{
+    public interface ISelectListener {
         public void onMenuRemove(MenuBean bean);
     }
 
-    public SelectItemView(Context context, MenuBean menuBean) {
+    public SelectItemView(Context context, final MenuBean menuBean) {
         super(context);
-        init(context,menuBean);
-        this.bean=bean ;
+        init(context, menuBean);
+        this.bean = bean;
+        delete.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (listener!=null){
+                    listener.onMenuRemove(menuBean);
+                }
+            }
+        });
     }
 
-    public void init(Context context,MenuBean menuBean) {
+    public void init(Context context, MenuBean menuBean) {
         LayoutInflater.from(context).inflate(R.layout.select_item, this);
-        ButterKnife.bind(this,this);
+        ButterKnife.bind(this, this);
         menuName.setText(menuBean.menuName);
-        price.setText(menuBean.price+"元");
-    }
-
-    @OnClick(R.id.delete)
-    public void onDelete(View view){
-       if(listener!=null){
-            listener.onMenuRemove(bean);
-       }
+        price.setText(menuBean.price + "元");
     }
 }

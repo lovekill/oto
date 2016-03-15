@@ -92,8 +92,7 @@ public class MainActivity extends BaseActivity
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                     ShopBean shopBean = adatper.getItem(i);
                     Intent intent = new Intent(MainActivity.this, MenuActivity.class);
-                    intent.putExtra(MenuActivity.SHOPNAME,shopBean.shopName);
-                    intent.putExtra(MenuActivity.SHOPID,shopBean.shopid);
+                    intent.putExtra(MenuActivity.SHOP,shopBean);
                     startActivity(intent);
                 }
             });
@@ -227,11 +226,13 @@ public class MainActivity extends BaseActivity
         @Override
         public void onReceiveLocation(BDLocation location) {
             //Receive Location
-            Location l = new Location(MainActivity.this);
-            l.address = location.getAddrStr();
-            l.latitude = location.getLatitude();
-            l.lontitude = location.getLongitude();
-            l.save();
+            if(location.getLocType()!=BDLocation.TypeCriteriaException) {
+                Location l = new Location(MainActivity.this);
+                l.address = location.getAddrStr();
+                l.latitude = location.getLatitude();
+                l.lontitude = location.getLongitude();
+                l.save();
+            }
         }
     }
 }

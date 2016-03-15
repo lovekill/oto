@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="match_parent">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:padding="8dp"
+                        android:layout_height="wrap_content">
+
+                    <TextView
+                            android:text="商家名字:"
+                            android:textSize="16sp"
+                            android:textColor="@color/gray"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                    <TextView
+                            android:text="9毛9"
+                            android:id="@+id/shopName"
+                            android:layout_marginLeft="8dp"
+                            android:textColor="@color/black"
+                            android:textSize="18sp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                </LinearLayout>
+
+                <LinearLayout
+                        android:id="@+id/addressLayout"
+                        android:layout_width="match_parent"
+                        android:padding="8dp"
+                        android:gravity="center"
+                        android:layout_height="wrap_content">
+
+                    <Button
+                            android:layout_gravity="center"
+                            android:text="新增地址"
+                            android:id="@+id/addAddress"
+                            android:background="@drawable/login_btn"
+                            android:textColor="@color/white"
+                            android:layout_width="wrap_content"
+                            android:layout_height="48dp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                        android:id="@+id/menuItem"
+                        android:layout_width="match_parent"
+                        android:orientation="vertical"
+                        android:layout_height="wrap_content"></LinearLayout>
+
+                <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:padding="8dp"
+                        android:layout_height="wrap_content">
+
+                    <TextView
+                            android:text="总价:"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                    <TextView
+                            android:text="56元"
+                            android:layout_alignParentRight="true"
+                            android:layout_width="wrap_content"
+                            android:id="@+id/totalPrice"
+                            android:layout_height="wrap_content"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:padding="8dp"
+                        android:layout_height="wrap_content">
+
+                    <TextView
+                            android:text="实付:"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                    <TextView
+                            android:text="56元"
+                            android:id="@+id/realPrice"
+                            android:layout_alignParentRight="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:padding="8dp"
+                        android:layout_height="wrap_content">
+
+                    <TextView
+                            android:text="优惠:"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                    <TextView
+                            android:text="56元"
+                            android:id="@+id/subtrackPrice"
+                            android:layout_alignParentRight="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                </RelativeLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+            android:layout_width="match_parent"
+            android:text="提交订单"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:background="@drawable/regist_btn"
+            android:layout_height="48dp"/>
+</LinearLayout>

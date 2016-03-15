@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:background="@color/yellow"
+            android:id="@+id/cartLayout"
+            android:layout_height="60dp">
+
+        <TextView
+                android:id="@+id/number"
+                android:layout_width="wrap_content"
+                android:text="共0份 0元"
+                android:textColor="@color/white"
+                android:layout_marginLeft="8dp"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:layout_height="match_parent"/>
+
+        <TextView
+                android:id="@+id/subtrackPrice"
+                android:layout_width="wrap_content"
+                android:gravity="center"
+                android:layout_toRightOf="@id/number"
+                android:textColor="@color/white"
+                android:layout_marginLeft="8dp"
+                android:textSize="18sp"
+                android:text="已经优惠0元"
+                android:layout_height="match_parent"/>
+
+        <Button
+                android:layout_gravity="right"
+                android:layout_width="wrap_content"
+                android:layout_alignParentRight="true"
+                android:textSize="18sp"
+                android:id="@+id/close"
+                android:textColor="@color/white"
+                android:text="关闭"
+                android:background="@drawable/finish_select"
+                android:layout_height="match_parent"/>
+    </RelativeLayout>
+    <ScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        <LinearLayout
+                android:id="@+id/itemLayout"
+                android:layout_width="wrap_content"
+                android:orientation="vertical"
+                android:layout_height="wrap_content"></LinearLayout>
+    </ScrollView>
+</LinearLayout>
