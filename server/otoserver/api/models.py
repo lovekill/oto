@@ -45,27 +45,30 @@ class Menu(models.Model):
     def __str__(self):
         return self.menuName
 
-class Address(models.Model):
 
-    """Docstring for Address. """
+class Address(models.Model):
+    ADDRESS_STATUS=((1,'默认地址'),(2,'常用地址'))
     addressid=models.AutoField(primary_key=True)
     userName=models.CharField(max_length=14,default="")
     phoneNumber=models.CharField(max_length=13,default='')
     addressName=models.CharField('地址',max_length=200)
     person=models.ForeignKey(Person)
     createTime=models.DateTimeField("创建时间",auto_now_add=True,editable=False)
+    status = models.IntegerField('地址状态',choices=ADDRESS_STATUS,default=2)
     def __str__(self):
         return self.addressName
 
 class OtoOrder(models.Model):
     STATUS=((1,"已下单"),(2,'已接单'),(3,'已经送出'),(4,'已经完成'))
-    orderId=models.CharField(max_length=32,null=False)
+    orderid =models.AutoField(primary_key=True)
+    orderNumber=models.CharField('订单号',max_length=32,null=False)
     shop=models.ForeignKey(Shop)
     person=models.ForeignKey(Person)
+    address=models.ForeignKey(Address,default=1)
     menues=models.ManyToManyField(Menu)
     price=models.FloatField('总价',default=0)
     favourable=models.FloatField('优惠金额',default=0)
-    createTime=models.DateTimeField("创建时间",auto_now_add=True,editable=False)
+    createTime=models.DateTimeField("创建时间",auto_now=True,editable=False)
     orderStatus=models.IntegerField('订单状态',choices=STATUS,default=1)
 
          

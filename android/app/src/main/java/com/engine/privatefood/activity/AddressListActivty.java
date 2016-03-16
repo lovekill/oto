@@ -14,8 +14,12 @@ import com.engine.privatefood.R;
 import com.engine.privatefood.UserManager;
 import com.engine.privatefood.adpater.AddressAdapter;
 import com.engine.privatefood.api.otoapi.LoadAdrressApi;
+import com.engine.privatefood.api.otoapi.UpdateDefaultAddressApi;
+import com.engine.privatefood.bean.AddressBean;
 import com.engine.privatefood.bean.UserBean;
 import com.squareup.otto.Subscribe;
+
+import java.util.List;
 
 /**
  * Created by engine on 16/3/13.
@@ -25,7 +29,8 @@ public class AddressListActivty extends BaseActivity {
     ListView listView;
     @Bind(R.id.emptyView)
     TextView emptyView;
-
+    List<AddressBean> list ;
+    AddressAdapter adapter ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,8 +57,9 @@ public class AddressListActivty extends BaseActivity {
 
     @Subscribe
     public void onAddressResponse(LoadAdrressApi api) {
-        AddressAdapter addressAdapter = new AddressAdapter(this,api.getListModel());
-        listView.setAdapter(addressAdapter);
+        list=api.getListModel();
+        adapter= new AddressAdapter(this,api.getListModel());
+        listView.setAdapter(adapter);
     }
 
     @Override
@@ -69,5 +75,21 @@ public class AddressListActivty extends BaseActivity {
             startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void updateAddress(AddressBean bean){
+        for (AddressBean b :list){
+            if (bean.addressid==b.addressid){
+                b.status=1 ;
+            }else {
+                b.status=2 ;
+            }
+        }
+        UserBean userBean = UserManager.getInstance(this).getUser() ;
+        UpdateDefaultAddressApi updateDefaultAddressApi = new UpdateDefaultAddressApi();
+        updateDefaultAddressApi.addressid=bean.addressid;
+        updateDefaultAddressApi.userid=userBean.userid;
+        updateDefaultAddressApi.execute();
+        adapter.notifyDataSetChanged();
     }
 }

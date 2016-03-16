@@ -6,14 +6,16 @@ import json
 import uuid
 import md5
 import math
+import datetime
 import logging
-from .models import Shop,Menu,Person,Address
+import random
+from .models import Shop,Menu,Person,Address,OtoOrder
 
 logger = logging.getLogger('django')
 # Create your views here.
 def index(request):
     print request.get_host()
-    return HttpResponse("hello 我是送外卖的")
+    return HttpResponse(createOrderid())
 def addShop(request):
     shop = Shop()
     shop.shopName=request.POST.get('shopName')
@@ -122,7 +124,28 @@ def getAddressList(request):
         return responseJson(0,addressList)
     else:
         return responseJson(0,"请先登录")
-
+def getDefaultAddress(request):
+    userid = request.GET.get("userid")
+    user=getPersonById(userid)
+    if user is not None:
+        addressSet=Address.objects.filter(person=user).filter(status=1)
+        for adr in addressSet:
+            return responseJson(0,addressToDict(adr))
+    return responseJson(1,"error")
+def setDefaultAddress(request):
+    userid = request.GET.get("userid")
+    addressid = request.GET.get("addressid")
+    user = getPersonById(userid)
+    if user is not None:
+        addressSet = Address.objects.filter(person=user)
+        for adr in addressSet:
+            print adr.addressid,addressid 
+            if adr.addressid == int(addressid):
+                adr.status=1
+            else:
+                adr.status=2
+            adr.save()
+    return responseJson(0,"update success")
 def getShopById(shopId):
     shopSet = Shop.objects.filter(shopid=shopId)
     if shopSet.count()==1:
@@ -147,14 +170,63 @@ def addressToDict(adr):
     return dict
 
 def generateOrder(request):
+    userid = request.GET.get("userid")
+    shopid = request.GET.get("shopid")
+    addressid = request.GET.get("addressid")
+    menuids = request.GET.get("menus")
+    order = OtoOrder()
+    shop = getShopById(shopid)
+    user = getPersonById(userid)
+    address = getAddressById(addressid)
+    if user is None or shop is None or address is None:
+        return responseJson(1,"参数不合法")
+    else:
+        order.shop = shop
+        order.person = user
+        order.address=address
+        order.orderNumber=createOrderid()
+        order.orderStatus=1
+        order.save()
+        menulist=[]
+        ms =menuids.split(",")
+        for i in range(len(ms)-1):
+            menu = getMenuById(ms[i])
+            if menu is not None:
+                menulist.append(menu)
+            else:
+                return responseJson(1,"menuids error")
+        totalprice =0 
+        for menu in menulist:
+            totalprice=totalprice+menu.price
+            order.menues.add(menu)
+        if totalprice>=shop.maxAmount:
+            totalprice = totalprice - shop.subtrackPrice
+            order.favourable=shop.subtrackPrice
+        order.price=totalprice
+        return responseJson(0,"order")
+
     return responseJson(0,"")
 def responseJson(code,data):
     dict={'code':code,'data':data}
     return HttpResponse(json.dumps(dict))
+def getAddressById(addressid):
+    try:
+        return Address.objects.get(addressid=addressid)
+    except Exception as e:
+        return None
+def getMenuById(menuId):
+    try:
+        return Menu.objects.get(menuId=menuId)
+    except Exception as e:
+        return None 
 def getMD5(src):
     m = md5.new()
     m.update(src)
     return m.hexdigest()
+def createOrderid():
+    number = random.randint(1000,9999)
+    time= datetime.datetime.now().strftime("%Y%m%d%H%I%S")
+    return "%s%s"%(time,number)
 def calcu_location(location_x, location_y, r=20):
     lat_range = 180 / math.pi * r / 6372.797  # 里面的 1 就代表搜索 1km 之内，单位km
     long_r = lat_range / math.cos(location_x * math.pi / 180)

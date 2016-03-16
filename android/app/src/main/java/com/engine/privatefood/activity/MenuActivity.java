@@ -86,6 +86,7 @@ public class MenuActivity extends BaseActivity implements MenuAdapter.IChoiceMen
     public void onSubmitClick(View view) {
         Intent intent = new Intent(this, GeneratorOrderActivity.class);
         intent.putParcelableArrayListExtra(GeneratorOrderActivity.MENUS, selectMenuList);
+        intent.putExtra(GeneratorOrderActivity.SHOP,shop);
         startActivity(intent);
     }
 

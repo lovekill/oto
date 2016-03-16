@@ -9,7 +9,7 @@ class ShopAdmin(admin.ModelAdmin):
 class MenuAdmin(admin.ModelAdmin):
     list_display=('menuName','price','shop','createTime','menuImage','menuStatus')
 class OrderAdmin(admin.ModelAdmin):
-    list_display=('orderId','shop','person','orderStatus','createTime')
+    list_display=('orderNumber','shop','person','orderStatus','price','favourable','createTime')
 class AddressAdmin(admin.ModelAdmin):
     list_display=('person','addressName')
 admin.site.register(Person,PersonAdmin)

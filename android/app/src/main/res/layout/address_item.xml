@@ -1,27 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
-    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:padding="8dp">
-        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="姓名:"
-                  android:textSize="18sp"/>
-        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                  android:textSize="24sp"
-                  android:id="@+id/name"
-                  android:layout_marginLeft="8dp"
-                  android:text="李红波"
-                  android:textColor="@color/black"/>
+    <LinearLayout
+            android:id="@+id/nameLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp">
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="姓名:"
+                android:textSize="18sp"/>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="22sp"
+                android:id="@+id/name"
+                android:layout_marginLeft="8dp"
+                android:text="李红波"
+                android:textColor="@color/black"/>
     </LinearLayout>
-    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:padding="8dp">
-                  android:textColor="@color/black"/>
-        <TextView android:layout_width="wrap_content"
-                  android:layout_height="wrap_content" android:textSize="18sp" android:text="电话:"/>
-        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="24sp"
-                  android:id="@+id/phoneNumber"
-                  android:text="13268236246" android:textColor="@color/black" android:layout_marginLeft="8dp"/>
+
+    <LinearLayout
+            android:id="@+id/phoneLayout"
+            android:layout_below="@id/nameLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp">
+        android:textColor="@color/black"/>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:text="电话:"/>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="22sp"
+                android:id="@+id/phoneNumber"
+                android:text="13268236246"
+                android:textColor="@color/black"
+                android:layout_marginLeft="8dp"/>
     </LinearLayout>
-    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="我的一个地址"
-              android:id="@+id/address"
-              android:textSize="12sp" android:layout_marginLeft="8dp"/>
-</LinearLayout>
+
+    <TextView
+            android:layout_below="@id/phoneLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="我的一个地址"
+            android:id="@+id/address"
+            android:textSize="12sp"
+            android:layout_marginLeft="8dp"/>
+    <Button
+            android:id="@+id/statusButton"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="8dp"
+            android:text="首选"
+            android:textColor="@color/white"
+            android:background="@drawable/regist_btn"
+            android:layout_width="60dp"
+            android:layout_height="40dp"/>
+</RelativeLayout>

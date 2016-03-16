@@ -8,4 +8,5 @@ public class AddressBean {
     public String name ;
     public String phoneNumber;
     public String address;
+    public int status ;
 }
