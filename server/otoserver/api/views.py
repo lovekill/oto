@@ -204,8 +204,17 @@ def generateOrder(request):
             order.favourable=shop.subtrackPrice
         order.price=totalprice
         return responseJson(0,"order")
-
     return responseJson(0,"")
+def getOrderListByUser(request):
+    userid = request.GET.get("userid")
+    user = getPersonById(userid)
+    if user is not None:
+        orderList=[]
+        orderSet = OtoOrder.objects.filter(person=user).order_by('-createTime')
+        for order in orderSet:
+            orderList.append(orderToDict(order))
+        return responseJson(0,orderList)
+
 def responseJson(code,data):
     dict={'code':code,'data':data}
     return HttpResponse(json.dumps(dict))
@@ -214,6 +223,9 @@ def getAddressById(addressid):
         return Address.objects.get(addressid=addressid)
     except Exception as e:
         return None
+def orderToDict(otoOrder):
+    return {"orderid":otoOrder.orderid,"orderNumber":otoOrder.orderNumber,"shopName":otoOrder.shop.shopName,
+        "address":otoOrder.address,"price":otoOrder.price,"time":otoOrder.createTime,"status":otoOrder.orderStatus}
 def getMenuById(menuId):
     try:
         return Menu.objects.get(menuId=menuId)
