@@ -2,6 +2,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.core import serializers
+from django.utils import timezone
 import json
 import uuid
 import md5
@@ -212,13 +213,12 @@ def getOrderDetail(request):
     orderid = request.GET.get("orderid")
     try:
         otoOrder = OtoOrder.objects.get(orderid=orderid)
-        for order in otoOrder:
-            menulist =[]
-            for menu in order.menues:
-                menulist.append(menuToDict(request,menu))
-            dict={"order":orderToDict(order),"address":addressToDict(order.address),"menues":menulist}
-            return responseJson(0,dict)
-        return responseJson(1,"orderid error")
+        print otoOrder.menues.all()
+        menulist =[]
+        for menu in otoOrder.menues.all():
+            menulist.append(menuToDict(request,menu))
+        dict={"order":orderToDict(otoOrder),"address":addressToDict(otoOrder.address),"menues":menulist}
+        return responseJson(0,dict)
     except Exception as e:
         return responseJson(1,"orderid is error")
 def getOrderListByUser(request):
@@ -240,8 +240,9 @@ def getAddressById(addressid):
     except Exception as e:
         return None
 def orderToDict(otoOrder):
+    time = timezone.localtime(otoOrder.createTime)
     return {"orderid":otoOrder.orderid,"orderNumber":otoOrder.orderNumber,"shopName":otoOrder.shop.shopName,
-            "address":otoOrder.address.addressName,"price":otoOrder.price,"time":otoOrder.createTime.strftime("%Y-%m-%d %H:%I:%S"),"status":otoOrder.orderStatus}
+            "address":otoOrder.address.addressName,"price":otoOrder.price,"time":time.strftime("%Y-%m-%d %H:%I:%S"),"status":otoOrder.orderStatus}
 def getMenuById(menuId):
     try:
         return Menu.objects.get(menuId=menuId)
