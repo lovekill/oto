@@ -13,5 +13,7 @@ urlpatterns=[
             url(r'^getMenuList$',views.getMenuList,name="getMenuList"),
             url(r'^getDefaultAddress$',views.getDefaultAddress,name="getDefaultAddress"),
             url(r'^setDefaultAddress$',views.setDefaultAddress,name="setDefaultAddress"),
-            url(r'^generatorOrder$',views.generateOrder,name="generateOrder")
+            url(r'^generatorOrder$',views.generateOrder,name="generateOrder"),
+            url(r'^getOrderListByUser$',views.getOrderListByUser,name="getOrderListByUser"),
+            url(r"^getOrderDetail$",views.getOrderDetail,name="getOrderDetail")
         ]

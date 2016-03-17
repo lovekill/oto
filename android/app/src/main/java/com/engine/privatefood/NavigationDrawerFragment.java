@@ -24,6 +24,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 import com.engine.privatefood.activity.AddressListActivty;
 import com.engine.privatefood.activity.LoginActivity;
+import com.engine.privatefood.activity.UserOrderActivity;
 import com.engine.privatefood.bean.UserBean;
 
 /**
@@ -224,6 +225,12 @@ public class NavigationDrawerFragment extends Fragment {
             UserBean user = UserManager.getInstance(getActivity()).getUser();
             if (user.userType==1){
                 Intent intent = new Intent(getActivity(), AddressListActivty.class);
+                startActivity(intent);
+            }
+        }else if (position==1){
+            UserBean user = UserManager.getInstance(getActivity()).getUser();
+            if (user.userType==1){
+                Intent intent = new Intent(getActivity(), UserOrderActivity.class);
                 startActivity(intent);
             }
         }

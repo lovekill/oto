@@ -25,6 +25,8 @@
         <activity android:name=".activity.AddressListActivty" android:screenOrientation="portrait"></activity>
         <activity android:name=".activity.MenuActivity" android:screenOrientation="portrait"></activity>
         <activity android:name=".activity.GeneratorOrderActivity" android:screenOrientation="portrait"></activity>
+        <activity android:name=".activity.UserOrderActivity" android:screenOrientation="portrait"></activity>
+        <activity android:name=".activity.OrderDetailActivity" android:screenOrientation="portrait"></activity>
         <service android:name="com.baidu.location.f" android:enabled="true" android:process=":remote">
         </service>
         <meta-data

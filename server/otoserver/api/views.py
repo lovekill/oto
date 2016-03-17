@@ -91,11 +91,12 @@ def getMenuList(request):
         menuSet = Menu.objects.filter(shop=shop)
         menulist =[] 
         for menu in menuSet:
-            imagepath = "http://{0}/{1}".format(request.get_host(),menu.menuImage.__str__());
-            dict = {"menuId":menu.menuId,"menuName":menu.menuName,"menuImage":imagepath,"price":menu.price}
-            menulist.append(dict)
+            menulist.append(menuToDict(request,menu))
             return responseJson(0,menulist)
     return responseJson(1,"please input shopid")
+def menuToDict(request,menu):
+    imagepath = "http://{0}/{1}".format(request.get_host(),menu.menuImage.__str__());
+    return {"menuId":menu.menuId,"menuName":menu.menuName,"menuImage":imagepath,"price":menu.price}
 def addAddress(request):
     name = request.GET.get("name")
     phoneNumber = request.GET.get("phoneNumber")
@@ -186,6 +187,7 @@ def generateOrder(request):
         order.address=address
         order.orderNumber=createOrderid()
         order.orderStatus=1
+        order.createTime=datetime.datetime.now()
         order.save()
         menulist=[]
         ms =menuids.split(",")
@@ -203,8 +205,22 @@ def generateOrder(request):
             totalprice = totalprice - shop.subtrackPrice
             order.favourable=shop.subtrackPrice
         order.price=totalprice
+        order.save()
         return responseJson(0,"order")
     return responseJson(0,"")
+def getOrderDetail(request):
+    orderid = request.GET.get("orderid")
+    try:
+        otoOrder = OtoOrder.objects.get(orderid=orderid)
+        for order in otoOrder:
+            menulist =[]
+            for menu in order.menues:
+                menulist.append(menuToDict(request,menu))
+            dict={"order":orderToDict(order),"address":addressToDict(order.address),"menues":menulist}
+            return responseJson(0,dict)
+        return responseJson(1,"orderid error")
+    except Exception as e:
+        return responseJson(1,"orderid is error")
 def getOrderListByUser(request):
     userid = request.GET.get("userid")
     user = getPersonById(userid)
@@ -225,7 +241,7 @@ def getAddressById(addressid):
         return None
 def orderToDict(otoOrder):
     return {"orderid":otoOrder.orderid,"orderNumber":otoOrder.orderNumber,"shopName":otoOrder.shop.shopName,
-        "address":otoOrder.address,"price":otoOrder.price,"time":otoOrder.createTime,"status":otoOrder.orderStatus}
+            "address":otoOrder.address.addressName,"price":otoOrder.price,"time":otoOrder.createTime.strftime("%Y-%m-%d %H:%I:%S"),"status":otoOrder.orderStatus}
 def getMenuById(menuId):
     try:
         return Menu.objects.get(menuId=menuId)

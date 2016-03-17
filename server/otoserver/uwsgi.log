@@ -4448,3 +4448,266 @@ spawned uWSGI worker 3 (pid: 2107, cores: 1)
 spawned uWSGI worker 4 (pid: 2108, cores: 1)
 [pid: 2103|app: 0|req: 1/1] 192.168.2.169 () {42 vars in 844 bytes} [Wed Mar 16 18:01:47 2016] GET /admin/api/otoorder/ => generated 6626 bytes in 75 msecs (HTTP/1.1 200) 7 headers in 373 bytes (2 switches on core 0)
 [pid: 2107|app: 0|req: 1/2] 192.168.2.169 () {40 vars in 756 bytes} [Wed Mar 16 18:01:47 2016] GET /admin/jsi18n/ => generated 7117 bytes in 37 msecs (HTTP/1.1 200) 3 headers in 93 bytes (1 switches on core 0)
+*** Starting uWSGI 2.0.12 (64bit) on [Thu Mar 17 17:14:17 2016] ***
+compiled with version: 4.2.1 Compatible Apple LLVM 7.0.2 (clang-700.1.81) on 07 March 2016 11:40:13
+os: Darwin-14.5.0 Darwin Kernel Version 14.5.0: Tue Sep  1 21:23:09 PDT 2015; root:xnu-2782.50.1~1/RELEASE_X86_64
+nodename: engine.local
+machine: x86_64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 4
+current working directory: /Users/engine/oto/server/otoserver
+detected binary path: /usr/local/bin/uwsgi
+chdir() to .
+*** WARNING: you are running uWSGI without its master process manager ***
+your processes number limit is 709
+your memory page size is 4096 bytes
+detected max file descriptor number: 256
+lock engine: OSX spinlocks
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to TCP address :8077 fd 3
+Python version: 2.7.10 (default, Jul 14 2015, 19:46:27)  [GCC 4.2.1 Compatible Apple LLVM 6.0 (clang-600.0.39)]
+*** Python threads support is disabled. You can enable it with --enable-threads ***
+Python main interpreter initialized at 0x7f88d07009a0
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 291040 bytes (284 KB) for 4 cores
+*** Operational MODE: preforking ***
+WSGI app 0 (mountpoint='') ready in 4 seconds on interpreter 0x7f88d07009a0 pid: 1484 (default app)
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI worker 1 (pid: 1484, cores: 1)
+spawned uWSGI worker 2 (pid: 1486, cores: 1)
+spawned uWSGI worker 3 (pid: 1487, cores: 1)
+spawned uWSGI worker 4 (pid: 1488, cores: 1)
+*** Starting uWSGI 2.0.12 (64bit) on [Thu Mar 17 17:14:36 2016] ***
+compiled with version: 4.2.1 Compatible Apple LLVM 7.0.2 (clang-700.1.81) on 07 March 2016 11:40:13
+os: Darwin-14.5.0 Darwin Kernel Version 14.5.0: Tue Sep  1 21:23:09 PDT 2015; root:xnu-2782.50.1~1/RELEASE_X86_64
+nodename: engine.local
+machine: x86_64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 4
+current working directory: /Users/engine/oto/server/otoserver
+detected binary path: /usr/local/bin/uwsgi
+chdir() to .
+*** WARNING: you are running uWSGI without its master process manager ***
+your processes number limit is 709
+your memory page size is 4096 bytes
+detected max file descriptor number: 256
+lock engine: OSX spinlocks
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to TCP address :8077 fd 3
+Python version: 2.7.10 (default, Jul 14 2015, 19:46:27)  [GCC 4.2.1 Compatible Apple LLVM 6.0 (clang-600.0.39)]
+*** Python threads support is disabled. You can enable it with --enable-threads ***
+Python main interpreter initialized at 0x7fb411600420
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 291040 bytes (284 KB) for 4 cores
+*** Operational MODE: preforking ***
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x7fb411600420 pid: 1500 (default app)
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI worker 1 (pid: 1500, cores: 1)
+spawned uWSGI worker 2 (pid: 1503, cores: 1)
+spawned uWSGI worker 3 (pid: 1504, cores: 1)
+spawned uWSGI worker 4 (pid: 1505, cores: 1)
+[pid: 1500|app: 0|req: 1/1] 192.168.3.2 () {32 vars in 498 bytes} [Thu Mar 17 17:14:51 2016] GET /oto/getshopList?lontitude=113.349682&latitude=23.133658& => generated 587 bytes in 301 msecs (HTTP/1.1 200) 2 headers in 88 bytes (2 switches on core 0)
+[pid: 1505|app: 0|req: 1/2] 192.168.2.169 () {40 vars in 886 bytes} [Thu Mar 17 17:14:52 2016] GET /oto/getshopList?lontitude=113.349682&latitude=23.133658& => generated 587 bytes in 34 msecs (HTTP/1.1 200) 2 headers in 88 bytes (1 switches on core 0)
+[pid: 1505|app: 0|req: 2/3] 192.168.2.169 () {40 vars in 789 bytes} [Thu Mar 17 17:14:53 2016] GET /favicon.ico => generated 2048 bytes in 3 msecs (HTTP/1.1 404) 2 headers in 80 bytes (2 switches on core 0)
+[pid: 1504|app: 0|req: 1/4] 192.168.3.2 () {32 vars in 436 bytes} [Thu Mar 17 17:15:24 2016] GET /oto/getMenuList?shopid=1& => generated 61028 bytes in 184 msecs (HTTP/1.1 500) 2 headers in 92 bytes (1 switches on core 0)
+[pid: 1505|app: 0|req: 3/5] 192.168.2.169 () {40 vars in 824 bytes} [Thu Mar 17 17:15:32 2016] GET /oto/getMenuList?shopid=1& => generated 62460 bytes in 90 msecs (HTTP/1.1 500) 2 headers in 92 bytes (1 switches on core 0)
+*** Starting uWSGI 2.0.12 (64bit) on [Thu Mar 17 17:16:45 2016] ***
+compiled with version: 4.2.1 Compatible Apple LLVM 7.0.2 (clang-700.1.81) on 07 March 2016 11:40:13
+os: Darwin-14.5.0 Darwin Kernel Version 14.5.0: Tue Sep  1 21:23:09 PDT 2015; root:xnu-2782.50.1~1/RELEASE_X86_64
+nodename: engine.local
+machine: x86_64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 4
+current working directory: /Users/engine/oto/server/otoserver
+detected binary path: /usr/local/bin/uwsgi
+chdir() to .
+*** WARNING: you are running uWSGI without its master process manager ***
+your processes number limit is 709
+your memory page size is 4096 bytes
+detected max file descriptor number: 256
+lock engine: OSX spinlocks
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to TCP address :8077 fd 3
+Python version: 2.7.10 (default, Jul 14 2015, 19:46:27)  [GCC 4.2.1 Compatible Apple LLVM 6.0 (clang-600.0.39)]
+*** Python threads support is disabled. You can enable it with --enable-threads ***
+Python main interpreter initialized at 0x7fc87340d530
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 291040 bytes (284 KB) for 4 cores
+*** Operational MODE: preforking ***
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x7fc87340d530 pid: 1523 (default app)
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI worker 1 (pid: 1523, cores: 1)
+spawned uWSGI worker 2 (pid: 1526, cores: 1)
+spawned uWSGI worker 3 (pid: 1527, cores: 1)
+spawned uWSGI worker 4 (pid: 1528, cores: 1)
+[pid: 1528|app: 0|req: 1/1] 192.168.2.169 () {42 vars in 855 bytes} [Thu Mar 17 17:16:49 2016] GET /oto/getMenuList?shopid=1& => generated 156 bytes in 29 msecs (HTTP/1.1 200) 2 headers in 88 bytes (1 switches on core 0)
+[pid: 1527|app: 0|req: 1/2] 192.168.3.2 () {32 vars in 498 bytes} [Thu Mar 17 17:17:38 2016] GET /oto/getshopList?lontitude=113.350043&latitude=23.134026& => generated 587 bytes in 39 msecs (HTTP/1.1 200) 2 headers in 88 bytes (1 switches on core 0)
+[pid: 1528|app: 0|req: 2/3] 192.168.3.2 () {32 vars in 436 bytes} [Thu Mar 17 17:17:40 2016] GET /oto/getMenuList?shopid=1& => generated 156 bytes in 4 msecs (HTTP/1.1 200) 2 headers in 88 bytes (1 switches on core 0)
+[pid: 1523|app: 0|req: 1/4] 192.168.3.2 () {32 vars in 448 bytes} [Thu Mar 17 17:17:48 2016] GET /oto/getDefaultAddress?userid=6& => generated 211 bytes in 62 msecs (HTTP/1.1 200) 2 headers in 88 bytes (2 switches on core 0)
+[pid: 1523|app: 0|req: 2/5] 192.168.3.2 () {32 vars in 526 bytes} [Thu Mar 17 17:17:51 2016] GET /oto/generatorOrder?userid=6&addressid=2&menus=1,1,1,1,1,1,1,&shopid=1& => generated 28 bytes in 512 msecs (HTTP/1.1 200) 2 headers in 88 bytes (2 switches on core 0)
+[pid: 1528|app: 0|req: 3/6] 192.168.3.2 () {32 vars in 498 bytes} [Thu Mar 17 17:18:02 2016] GET /oto/getshopList?lontitude=113.350043&latitude=23.134026& => generated 587 bytes in 3 msecs (HTTP/1.1 200) 2 headers in 88 bytes (2 switches on core 0)
+[pid: 1527|app: 0|req: 2/7] 192.168.3.2 () {32 vars in 498 bytes} [Thu Mar 17 17:19:49 2016] GET /oto/getshopList?lontitude=113.350043&latitude=23.134026& => generated 587 bytes in 3 msecs (HTTP/1.1 200) 2 headers in 88 bytes (1 switches on core 0)
+[pid: 1527|app: 0|req: 3/8] 192.168.3.2 () {32 vars in 436 bytes} [Thu Mar 17 17:19:54 2016] GET /oto/getMenuList?shopid=1& => generated 156 bytes in 4 msecs (HTTP/1.1 200) 2 headers in 88 bytes (1 switches on core 0)
+[pid: 1523|app: 0|req: 3/9] 192.168.3.2 () {32 vars in 498 bytes} [Thu Mar 17 17:20:02 2016] GET /oto/getshopList?lontitude=113.350068&latitude=23.134051& => generated 587 bytes in 3 msecs (HTTP/1.1 200) 2 headers in 88 bytes (1 switches on core 0)
+[pid: 1523|app: 0|req: 4/10] 192.168.3.2 () {32 vars in 450 bytes} [Thu Mar 17 17:20:05 2016] GET /oto/getOrderListByUser?userid=6& => generated 93371 bytes in 157 msecs (HTTP/1.1 500) 2 headers in 92 bytes (2 switches on core 0)
+[pid: 1527|app: 0|req: 4/11] 192.168.2.169 () {40 vars in 838 bytes} [Thu Mar 17 17:20:12 2016] GET /oto/getOrderListByUser?userid=6& => generated 94803 bytes in 125 msecs (HTTP/1.1 500) 2 headers in 92 bytes (1 switches on core 0)
+*** Starting uWSGI 2.0.12 (64bit) on [Thu Mar 17 17:21:01 2016] ***
+compiled with version: 4.2.1 Compatible Apple LLVM 7.0.2 (clang-700.1.81) on 07 March 2016 11:40:13
+os: Darwin-14.5.0 Darwin Kernel Version 14.5.0: Tue Sep  1 21:23:09 PDT 2015; root:xnu-2782.50.1~1/RELEASE_X86_64
+nodename: engine.local
+machine: x86_64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 4
+current working directory: /Users/engine/oto/server/otoserver
+detected binary path: /usr/local/bin/uwsgi
+chdir() to .
+*** WARNING: you are running uWSGI without its master process manager ***
+your processes number limit is 709
+your memory page size is 4096 bytes
+detected max file descriptor number: 256
+lock engine: OSX spinlocks
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to TCP address :8077 fd 3
+Python version: 2.7.10 (default, Jul 14 2015, 19:46:27)  [GCC 4.2.1 Compatible Apple LLVM 6.0 (clang-600.0.39)]
+*** Python threads support is disabled. You can enable it with --enable-threads ***
+Python main interpreter initialized at 0x7f9c63700690
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 291040 bytes (284 KB) for 4 cores
+*** Operational MODE: preforking ***
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x7f9c63700690 pid: 1559 (default app)
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI worker 1 (pid: 1559, cores: 1)
+spawned uWSGI worker 2 (pid: 1562, cores: 1)
+spawned uWSGI worker 3 (pid: 1563, cores: 1)
+spawned uWSGI worker 4 (pid: 1564, cores: 1)
+[pid: 1564|app: 0|req: 1/1] 192.168.2.169 () {42 vars in 869 bytes} [Thu Mar 17 17:21:05 2016] GET /oto/getOrderListByUser?userid=6& => generated 96043 bytes in 125 msecs (HTTP/1.1 500) 2 headers in 92 bytes (2 switches on core 0)
+*** Starting uWSGI 2.0.12 (64bit) on [Thu Mar 17 17:22:33 2016] ***
+compiled with version: 4.2.1 Compatible Apple LLVM 7.0.2 (clang-700.1.81) on 07 March 2016 11:40:13
+os: Darwin-14.5.0 Darwin Kernel Version 14.5.0: Tue Sep  1 21:23:09 PDT 2015; root:xnu-2782.50.1~1/RELEASE_X86_64
+nodename: engine.local
+machine: x86_64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 4
+current working directory: /Users/engine/oto/server/otoserver
+detected binary path: /usr/local/bin/uwsgi
+chdir() to .
+*** WARNING: you are running uWSGI without its master process manager ***
+your processes number limit is 709
+your memory page size is 4096 bytes
+detected max file descriptor number: 256
+lock engine: OSX spinlocks
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to TCP address :8077 fd 3
+Python version: 2.7.10 (default, Jul 14 2015, 19:46:27)  [GCC 4.2.1 Compatible Apple LLVM 6.0 (clang-600.0.39)]
+*** Python threads support is disabled. You can enable it with --enable-threads ***
+Python main interpreter initialized at 0x7fdfd3c0cdf0
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 291040 bytes (284 KB) for 4 cores
+*** Operational MODE: preforking ***
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x7fdfd3c0cdf0 pid: 1585 (default app)
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI worker 1 (pid: 1585, cores: 1)
+spawned uWSGI worker 2 (pid: 1588, cores: 1)
+spawned uWSGI worker 3 (pid: 1589, cores: 1)
+spawned uWSGI worker 4 (pid: 1590, cores: 1)
+[pid: 1590|app: 0|req: 1/1] 192.168.2.169 () {42 vars in 869 bytes} [Thu Mar 17 17:22:40 2016] GET /oto/getOrderListByUser?userid=6& => generated 1070 bytes in 35 msecs (HTTP/1.1 200) 2 headers in 88 bytes (2 switches on core 0)
+[pid: 1590|app: 0|req: 2/2] 192.168.3.2 () {32 vars in 450 bytes} [Thu Mar 17 17:22:54 2016] GET /oto/getOrderListByUser?userid=6& => generated 1070 bytes in 9 msecs (HTTP/1.1 200) 2 headers in 88 bytes (2 switches on core 0)
+[pid: 1589|app: 0|req: 1/3] 192.168.3.2 () {32 vars in 498 bytes} [Thu Mar 17 17:37:27 2016] GET /oto/getshopList?lontitude=113.350068&latitude=23.134051& => generated 587 bytes in 60 msecs (HTTP/1.1 200) 2 headers in 88 bytes (1 switches on core 0)
+[pid: 1588|app: 0|req: 1/4] 192.168.3.2 () {32 vars in 436 bytes} [Thu Mar 17 17:37:29 2016] GET /oto/getMenuList?shopid=1& => generated 156 bytes in 26 msecs (HTTP/1.1 200) 2 headers in 88 bytes (1 switches on core 0)
+[pid: 1589|app: 0|req: 2/5] 192.168.3.2 () {32 vars in 448 bytes} [Thu Mar 17 17:37:33 2016] GET /oto/getDefaultAddress?userid=6& => generated 211 bytes in 4 msecs (HTTP/1.1 200) 2 headers in 88 bytes (2 switches on core 0)
+[pid: 1585|app: 0|req: 1/6] 192.168.3.2 () {32 vars in 518 bytes} [Thu Mar 17 17:37:39 2016] GET /oto/generatorOrder?userid=6&addressid=2&menus=1,1,1,1,1,&shopid=1& => generated 28 bytes in 37 msecs (HTTP/1.1 200) 2 headers in 88 bytes (2 switches on core 0)
+[pid: 1590|app: 0|req: 3/7] 192.168.3.2 () {32 vars in 450 bytes} [Thu Mar 17 17:37:58 2016] GET /oto/getOrderListByUser?userid=6& => generated 1329 bytes in 11 msecs (HTTP/1.1 200) 2 headers in 88 bytes (2 switches on core 0)
+[pid: 1588|app: 0|req: 2/8] 192.168.2.169 () {40 vars in 785 bytes} [Thu Mar 17 17:38:28 2016] GET /admin => generated 0 bytes in 3 msecs (HTTP/1.1 301) 2 headers in 93 bytes (2 switches on core 0)
+[pid: 1588|app: 0|req: 3/9] 192.168.2.169 () {40 vars in 787 bytes} [Thu Mar 17 17:38:28 2016] GET /admin/ => generated 7546 bytes in 159 msecs (HTTP/1.1 200) 6 headers in 251 bytes (2 switches on core 0)
+[pid: 1589|app: 0|req: 3/10] 192.168.2.169 () {42 vars in 861 bytes} [Thu Mar 17 17:38:31 2016] GET /admin/api/otoorder/ => generated 7630 bytes in 112 msecs (HTTP/1.1 200) 7 headers in 373 bytes (1 switches on core 0)
+[pid: 1590|app: 0|req: 4/11] 192.168.2.169 () {40 vars in 756 bytes} [Thu Mar 17 17:38:31 2016] GET /admin/jsi18n/ => generated 7117 bytes in 144 msecs (HTTP/1.1 200) 3 headers in 93 bytes (1 switches on core 0)
+[pid: 1588|app: 0|req: 4/12] 192.168.2.169 () {42 vars in 892 bytes} [Thu Mar 17 17:41:07 2016] GET /admin/api/otoorder/4/change/ => generated 11125 bytes in 91 msecs (HTTP/1.1 200) 7 headers in 373 bytes (2 switches on core 0)
+[pid: 1590|app: 0|req: 5/13] 192.168.2.169 () {40 vars in 765 bytes} [Thu Mar 17 17:41:07 2016] GET /admin/jsi18n/ => generated 7117 bytes in 14 msecs (HTTP/1.1 200) 3 headers in 93 bytes (1 switches on core 0)
+[pid: 1588|app: 0|req: 5/14] 192.168.2.169 () {42 vars in 861 bytes} [Thu Mar 17 17:41:15 2016] GET /admin/api/otoorder/ => generated 7630 bytes in 33 msecs (HTTP/1.1 200) 7 headers in 373 bytes (2 switches on core 0)
+*** Starting uWSGI 2.0.12 (64bit) on [Thu Mar 17 17:42:22 2016] ***
+compiled with version: 4.2.1 Compatible Apple LLVM 7.0.2 (clang-700.1.81) on 07 March 2016 11:40:13
+os: Darwin-14.5.0 Darwin Kernel Version 14.5.0: Tue Sep  1 21:23:09 PDT 2015; root:xnu-2782.50.1~1/RELEASE_X86_64
+nodename: engine.local
+machine: x86_64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 4
+current working directory: /Users/engine/oto/server/otoserver
+detected binary path: /usr/local/bin/uwsgi
+chdir() to .
+*** WARNING: you are running uWSGI without its master process manager ***
+your processes number limit is 709
+your memory page size is 4096 bytes
+detected max file descriptor number: 256
+lock engine: OSX spinlocks
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to TCP address :8077 fd 3
+Python version: 2.7.10 (default, Jul 14 2015, 19:46:27)  [GCC 4.2.1 Compatible Apple LLVM 6.0 (clang-600.0.39)]
+*** Python threads support is disabled. You can enable it with --enable-threads ***
+Python main interpreter initialized at 0x7fe6516008b0
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 291040 bytes (284 KB) for 4 cores
+*** Operational MODE: preforking ***
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x7fe6516008b0 pid: 1622 (default app)
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI worker 1 (pid: 1622, cores: 1)
+spawned uWSGI worker 2 (pid: 1625, cores: 1)
+spawned uWSGI worker 3 (pid: 1626, cores: 1)
+spawned uWSGI worker 4 (pid: 1627, cores: 1)
+[pid: 1627|app: 0|req: 1/1] 192.168.3.2 () {32 vars in 436 bytes} [Thu Mar 17 17:42:33 2016] GET /oto/getMenuList?shopid=1& => generated 156 bytes in 29 msecs (HTTP/1.1 200) 2 headers in 88 bytes (2 switches on core 0)
+[pid: 1625|app: 0|req: 1/2] 192.168.3.2 () {32 vars in 448 bytes} [Thu Mar 17 17:42:37 2016] GET /oto/getDefaultAddress?userid=6& => generated 211 bytes in 25 msecs (HTTP/1.1 200) 2 headers in 88 bytes (1 switches on core 0)
+[pid: 1625|app: 0|req: 2/3] 192.168.3.2 () {32 vars in 530 bytes} [Thu Mar 17 17:42:42 2016] GET /oto/generatorOrder?userid=6&addressid=2&menus=1,1,1,1,1,1,1,1,&shopid=1& => generated 28 bytes in 25 msecs (HTTP/1.1 200) 2 headers in 88 bytes (1 switches on core 0)
+[pid: 1627|app: 0|req: 2/4] 192.168.2.169 () {42 vars in 844 bytes} [Thu Mar 17 17:42:46 2016] GET /admin/api/otoorder/ => generated 8133 bytes in 56 msecs (HTTP/1.1 200) 7 headers in 373 bytes (2 switches on core 0)
+[pid: 1625|app: 0|req: 3/5] 192.168.2.169 () {40 vars in 756 bytes} [Thu Mar 17 17:42:47 2016] GET /admin/jsi18n/ => generated 7117 bytes in 10 msecs (HTTP/1.1 200) 3 headers in 93 bytes (1 switches on core 0)
+[pid: 1626|app: 0|req: 1/6] 192.168.3.2 () {32 vars in 450 bytes} [Thu Mar 17 17:43:00 2016] GET /oto/getOrderListByUser?userid=6& => generated 1589 bytes in 35 msecs (HTTP/1.1 200) 2 headers in 88 bytes (1 switches on core 0)
+[pid: 1625|app: 0|req: 4/7] 192.168.2.169 () {40 vars in 838 bytes} [Thu Mar 17 17:53:22 2016] GET /oto/getOrderListByUser?userid=6& => generated 1589 bytes in 15 msecs (HTTP/1.1 200) 2 headers in 88 bytes (2 switches on core 0)
+*** Starting uWSGI 2.0.12 (64bit) on [Thu Mar 17 17:58:08 2016] ***
+compiled with version: 4.2.1 Compatible Apple LLVM 7.0.2 (clang-700.1.81) on 07 March 2016 11:40:13
+os: Darwin-14.5.0 Darwin Kernel Version 14.5.0: Tue Sep  1 21:23:09 PDT 2015; root:xnu-2782.50.1~1/RELEASE_X86_64
+nodename: engine.local
+machine: x86_64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 4
+current working directory: /Users/engine/oto/server/otoserver
+detected binary path: /usr/local/bin/uwsgi
+chdir() to .
+*** WARNING: you are running uWSGI without its master process manager ***
+your processes number limit is 709
+your memory page size is 4096 bytes
+detected max file descriptor number: 256
+lock engine: OSX spinlocks
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to TCP address :8077 fd 3
+Python version: 2.7.10 (default, Jul 14 2015, 19:46:27)  [GCC 4.2.1 Compatible Apple LLVM 6.0 (clang-600.0.39)]
+*** Python threads support is disabled. You can enable it with --enable-threads ***
+Python main interpreter initialized at 0x7f9401f00420
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 291040 bytes (284 KB) for 4 cores
+*** Operational MODE: preforking ***
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x7f9401f00420 pid: 1661 (default app)
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI worker 1 (pid: 1661, cores: 1)
+spawned uWSGI worker 2 (pid: 1664, cores: 1)
+spawned uWSGI worker 3 (pid: 1665, cores: 1)
+spawned uWSGI worker 4 (pid: 1666, cores: 1)
+[pid: 1666|app: 0|req: 1/1] 192.168.3.2 () {32 vars in 436 bytes} [Thu Mar 17 17:58:15 2016] GET /oto/getMenuList?shopid=2& => generated 156 bytes in 63 msecs (HTTP/1.1 200) 2 headers in 88 bytes (1 switches on core 0)
+[pid: 1664|app: 0|req: 1/2] 192.168.3.2 () {32 vars in 448 bytes} [Thu Mar 17 17:58:18 2016] GET /oto/getDefaultAddress?userid=6& => generated 211 bytes in 24 msecs (HTTP/1.1 200) 2 headers in 88 bytes (2 switches on core 0)
+/Library/Python/2.7/site-packages/django/db/models/fields/__init__.py:1453: RuntimeWarning: DateTimeField OtoOrder.createTime received a naive datetime (2016-03-17 17:58:19.602005) while time zone support is active.
+  RuntimeWarning)
+
+[pid: 1664|app: 0|req: 2/3] 192.168.3.2 () {32 vars in 518 bytes} [Thu Mar 17 17:58:19 2016] GET /oto/generatorOrder?userid=6&addressid=2&menus=2,2,2,2,2,&shopid=2& => generated 28 bytes in 70 msecs (HTTP/1.1 200) 2 headers in 88 bytes (2 switches on core 0)
+[pid: 1665|app: 0|req: 1/4] 192.168.3.2 () {32 vars in 450 bytes} [Thu Mar 17 17:58:30 2016] GET /oto/getOrderListByUser?userid=6& => generated 1855 bytes in 37 msecs (HTTP/1.1 200) 2 headers in 88 bytes (2 switches on core 0)
+[pid: 1664|app: 0|req: 3/5] 192.168.2.169 () {40 vars in 838 bytes} [Thu Mar 17 17:58:56 2016] GET /oto/getOrderListByUser?userid=6& => generated 1855 bytes in 21 msecs (HTTP/1.1 200) 2 headers in 88 bytes (1 switches on core 0)

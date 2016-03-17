@@ -68,7 +68,7 @@ class OtoOrder(models.Model):
     menues=models.ManyToManyField(Menu)
     price=models.FloatField('总价',default=0)
     favourable=models.FloatField('优惠金额',default=0)
-    createTime=models.DateTimeField("创建时间",auto_now=True,editable=False)
+    createTime=models.DateTimeField("创建时间")
     orderStatus=models.IntegerField('订单状态',choices=STATUS,default=1)
 
          
