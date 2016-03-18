@@ -10,7 +10,7 @@ import math
 import datetime
 import logging
 import random
-from .models import Shop,Menu,Person,Address,OtoOrder
+from .models import Shop,Menu,Person,Address,OtoOrder,OrderDetail
 
 logger = logging.getLogger('django')
 # Create your views here.
@@ -195,13 +195,17 @@ def generateOrder(request):
         for i in range(len(ms)-1):
             menu = getMenuById(ms[i])
             if menu is not None:
+                detail=OrderDetail()
+                detail.menuName=menu.menuName
+                detail.price=menu.price
+                detail.order=order
+                detail.save()
                 menulist.append(menu)
             else:
                 return responseJson(1,"menuids error")
         totalprice =0 
         for menu in menulist:
             totalprice=totalprice+menu.price
-            order.menues.add(menu)
         if totalprice>=shop.maxAmount:
             totalprice = totalprice - shop.subtrackPrice
             order.favourable=shop.subtrackPrice
@@ -213,10 +217,11 @@ def getOrderDetail(request):
     orderid = request.GET.get("orderid")
     try:
         otoOrder = OtoOrder.objects.get(orderid=orderid)
-        print otoOrder.menues.all()
+        orderDetailSet = OrderDetail.objects.filter(order=otoOrder)
+        print orderDetailSet
         menulist =[]
-        for menu in otoOrder.menues.all():
-            menulist.append(menuToDict(request,menu))
+        for menu in orderDetailSet:
+            menulist.append(orderDetailToDict(menu))
         dict={"order":orderToDict(otoOrder),"address":addressToDict(otoOrder.address),"menues":menulist}
         return responseJson(0,dict)
     except Exception as e:
@@ -231,6 +236,8 @@ def getOrderListByUser(request):
             orderList.append(orderToDict(order))
         return responseJson(0,orderList)
 
+def orderDetailToDict(orderDetail):
+    return {"menuName":orderDetail.menuName,"price":orderDetail.price}
 def responseJson(code,data):
     dict={'code':code,'data':data}
     return HttpResponse(json.dumps(dict))

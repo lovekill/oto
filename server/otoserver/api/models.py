@@ -65,10 +65,12 @@ class OtoOrder(models.Model):
     shop=models.ForeignKey(Shop)
     person=models.ForeignKey(Person)
     address=models.ForeignKey(Address,default=1)
-    menues=models.ManyToManyField(Menu)
     price=models.FloatField('总价',default=0)
     favourable=models.FloatField('优惠金额',default=0)
     createTime=models.DateTimeField("创建时间")
     orderStatus=models.IntegerField('订单状态',choices=STATUS,default=1)
-
-         
+class OrderDetail(models.Model):
+    detailid = models.AutoField(primary_key=True)
+    menuName=models.CharField('菜单名字',max_length=40,default="")
+    price= models.FloatField('菜单价格',default=0)
+    order=models.ForeignKey(OtoOrder)
