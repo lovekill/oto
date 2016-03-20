@@ -14,9 +14,12 @@ import com.engine.privatefood.adpater.UserOrderAdapter;
 import com.engine.privatefood.api.otoapi.LoadUserOrderApi;
 import com.engine.privatefood.bean.OrderBean;
 import com.engine.privatefood.bean.OrderDetailBean;
+import com.engine.privatefood.bean.OrderSectionBean;
 import com.engine.privatefood.bean.UserBean;
+import com.engine.privatefood.view.PinnedSectionListView;
 import com.squareup.otto.Subscribe;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -24,8 +27,9 @@ import java.util.List;
  */
 public class UserOrderActivity extends BaseActivity implements AdapterView.OnItemClickListener {
     @Bind(R.id.listView)
-    ListView listView;
+    PinnedSectionListView listView;
     List<OrderBean> list;
+    List<OrderSectionBean> beenlist = new ArrayList<OrderSectionBean>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,7 +53,29 @@ public class UserOrderActivity extends BaseActivity implements AdapterView.OnIte
     @Subscribe
     public void getOrderResponse(LoadUserOrderApi api){
         list=api.getListModel();
-        UserOrderAdapter adapter = new UserOrderAdapter(this,list);
+
+        for (int i = 0; i <list.size() ; i++) {
+            OrderBean bean = list.get(i);
+            if (beenlist.size()==0){
+                OrderSectionBean sectionBean = new OrderSectionBean();
+                sectionBean.type=OrderSectionBean.SECTION;
+                sectionBean.orderBean=bean ;
+                beenlist.add(sectionBean);
+            }else {
+                String  sectionTime =beenlist.get(i-1).orderBean.sectionTime;
+                if (!sectionTime.equals(bean.sectionTime)){
+                    OrderSectionBean sectionBean = new OrderSectionBean();
+                    sectionBean.type=OrderSectionBean.SECTION;
+                    sectionBean.orderBean=bean ;
+                    beenlist.add(sectionBean);
+                }
+            }
+            OrderSectionBean sectionBean = new OrderSectionBean();
+            sectionBean.type=OrderSectionBean.ITEM;
+            sectionBean.orderBean=bean ;
+            beenlist.add(sectionBean);
+        }
+        UserOrderAdapter adapter = new UserOrderAdapter(this,beenlist);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(this);
     }

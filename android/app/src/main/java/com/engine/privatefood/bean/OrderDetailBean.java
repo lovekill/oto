@@ -8,5 +8,4 @@ import java.util.List;
 public class OrderDetailBean {
     public OrderBean order ;
     public List<MenuBean> menues ;
-    public AddressBean address ;
 }

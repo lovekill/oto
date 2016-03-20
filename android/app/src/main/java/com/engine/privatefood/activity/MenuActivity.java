@@ -57,7 +57,7 @@ public class MenuActivity extends BaseActivity implements MenuAdapter.IChoiceMen
         shop = getIntent().getParcelableExtra(SHOP);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBar.setTitle(getIntent().getStringExtra(shop.shopName));
+        actionBar.setTitle(shop.shopName);
         loadMenu();
     }
 

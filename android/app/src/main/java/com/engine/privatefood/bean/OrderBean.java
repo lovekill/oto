@@ -14,7 +14,11 @@ public class OrderBean implements Parcelable {
     public String address ;
     public float price ;
     public int status ;
-
+    public String phoneNumber;
+    public String personName ;
+    public float subtrackPrice ;
+    public String shopPhoneNumber ;
+    public String sectionTime ;
     protected OrderBean(Parcel in) {
         orderid = in.readInt();
         orderNumber = in.readString();
@@ -23,6 +27,11 @@ public class OrderBean implements Parcelable {
         address = in.readString();
         price = in.readFloat();
         status = in.readInt();
+        phoneNumber=in.readString();
+        personName=in.readString();
+        subtrackPrice=in.readFloat();
+        shopPhoneNumber = in.readString() ;
+        sectionTime = in.readString() ;
     }
 
     public static final Creator<OrderBean> CREATOR = new Creator<OrderBean>() {
@@ -51,5 +60,10 @@ public class OrderBean implements Parcelable {
         parcel.writeString(address);
         parcel.writeFloat(price);
         parcel.writeInt(status);
+        parcel.writeString(phoneNumber);
+        parcel.writeString(personName);
+        parcel.writeFloat(subtrackPrice);
+        parcel.writeString(shopPhoneNumber);
+        parcel.writeString(sectionTime);
     }
 }

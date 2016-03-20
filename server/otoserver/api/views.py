@@ -183,9 +183,12 @@ def generateOrder(request):
     if user is None or shop is None or address is None:
         return responseJson(1,"参数不合法")
     else:
-        order.shop = shop
-        order.person = user
-        order.address=address
+        order.shopName= shop.shopName
+        order.person =user
+        order.shop=shop
+        order.personName= address.userName
+        order.address=address.addressName
+        order.phoneNumber=address.phoneNumber
         order.orderNumber=createOrderid()
         order.orderStatus=1
         order.createTime=datetime.datetime.now()
@@ -222,7 +225,9 @@ def getOrderDetail(request):
         menulist =[]
         for menu in orderDetailSet:
             menulist.append(orderDetailToDict(menu))
-        dict={"order":orderToDict(otoOrder),"address":addressToDict(otoOrder.address),"menues":menulist}
+        orderdict = orderToDict(otoOrder)
+        orderdict["shopPhoneNumber"]=otoOrder.shop.phoneNumber
+        dict={"order":orderdict,"menues":menulist}
         return responseJson(0,dict)
     except Exception as e:
         return responseJson(1,"orderid is error")
@@ -248,8 +253,8 @@ def getAddressById(addressid):
         return None
 def orderToDict(otoOrder):
     time = timezone.localtime(otoOrder.createTime)
-    return {"orderid":otoOrder.orderid,"orderNumber":otoOrder.orderNumber,"shopName":otoOrder.shop.shopName,
-            "address":otoOrder.address.addressName,"price":otoOrder.price,"time":time.strftime("%Y-%m-%d %H:%I:%S"),"status":otoOrder.orderStatus}
+    return {"orderid":otoOrder.orderid,"orderNumber":otoOrder.orderNumber,"shopName":otoOrder.shopName,"personName":otoOrder.personName,"subtrackPrice":otoOrder.favourable,
+            "address":otoOrder.address,"phoneNumber":otoOrder.phoneNumber,"price":otoOrder.price,"time":time.strftime("%Y-%m-%d %H:%I:%S"),"status":otoOrder.orderStatus,"sectionTime":time.strftime("%Y-%m-%d")}
 def getMenuById(menuId):
     try:
         return Menu.objects.get(menuId=menuId)
