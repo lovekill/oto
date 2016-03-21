@@ -3,6 +3,7 @@
           package="com.engine.privatefood">
 
     <application
+            android:name=".Application"
             android:allowBackup="true"
             android:icon="@mipmap/ic_launcher"
             android:label="@string/app_name"
@@ -27,6 +28,11 @@
         <activity android:name=".activity.GeneratorOrderActivity" android:screenOrientation="portrait"></activity>
         <activity android:name=".activity.UserOrderActivity" android:screenOrientation="portrait"></activity>
         <activity android:name=".activity.OrderDetailActivity" android:screenOrientation="portrait"></activity>
+        <activity android:name=".activity.EditShopActivity" android:screenOrientation="portrait"></activity>
+        <activity android:name=".activity.ImageCropActivity" android:screenOrientation="portrait"></activity>
+        <activity android:name=".activity.ImagePreviewActivity" android:screenOrientation="portrait"></activity>
+        <activity android:name=".activity.ImagesGridActivity" android:screenOrientation="portrait"></activity>
+        <activity android:name=".activity.MyShopActivity" android:screenOrientation="portrait"></activity>
         <service android:name="com.baidu.location.f" android:enabled="true" android:process=":remote">
         </service>
         <meta-data

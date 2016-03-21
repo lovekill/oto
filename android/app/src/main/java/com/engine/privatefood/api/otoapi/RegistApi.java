@@ -28,7 +28,7 @@ public class RegistApi extends ParseJsonApi<UserBean> {
 
     @Override
     protected String getPath() {
-        return "/regist";
+        return "regist";
     }
 
     @Override

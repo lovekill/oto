@@ -5496,3 +5496,74 @@ spawned uWSGI worker 4 (pid: 18566, cores: 1)
 [pid: 18561|app: 0|req: 23/29] 192.168.1.104 () {32 vars in 448 bytes} [Sat Mar 19 22:25:37 2016] GET /oto/getOrderDetail?orderid=20& => generated 796 bytes in 6 msecs (HTTP/1.1 200) 2 headers in 88 bytes (1 switches on core 0)
 [<OrderDetail: OrderDetail object>, <OrderDetail: OrderDetail object>, <OrderDetail: OrderDetail object>, <OrderDetail: OrderDetail object>]
 [pid: 18566|app: 0|req: 3/30] 192.168.1.104 () {32 vars in 448 bytes} [Sat Mar 19 22:26:06 2016] GET /oto/getOrderDetail?orderid=19& => generated 678 bytes in 8 msecs (HTTP/1.1 200) 2 headers in 88 bytes (2 switches on core 0)
+*** Starting uWSGI 2.0.12 (64bit) on [Mon Mar 21 16:04:49 2016] ***
+compiled with version: 4.2.1 Compatible Apple LLVM 7.0.2 (clang-700.1.81) on 07 March 2016 11:40:13
+os: Darwin-14.5.0 Darwin Kernel Version 14.5.0: Tue Sep  1 21:23:09 PDT 2015; root:xnu-2782.50.1~1/RELEASE_X86_64
+nodename: engine.local
+machine: x86_64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 4
+current working directory: /Users/engine/oto/server/otoserver
+detected binary path: /usr/local/bin/uwsgi
+chdir() to .
+*** WARNING: you are running uWSGI without its master process manager ***
+your processes number limit is 709
+your memory page size is 4096 bytes
+detected max file descriptor number: 256
+lock engine: OSX spinlocks
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to TCP address :8077 fd 3
+Python version: 2.7.10 (default, Jul 14 2015, 19:46:27)  [GCC 4.2.1 Compatible Apple LLVM 6.0 (clang-600.0.39)]
+*** Python threads support is disabled. You can enable it with --enable-threads ***
+Python main interpreter initialized at 0x7fe65b40ce50
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 291040 bytes (284 KB) for 4 cores
+*** Operational MODE: preforking ***
+WSGI app 0 (mountpoint='') ready in 3 seconds on interpreter 0x7fe65b40ce50 pid: 4299 (default app)
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI worker 1 (pid: 4299, cores: 1)
+spawned uWSGI worker 2 (pid: 4301, cores: 1)
+spawned uWSGI worker 3 (pid: 4302, cores: 1)
+spawned uWSGI worker 4 (pid: 4303, cores: 1)
+*** Starting uWSGI 2.0.12 (64bit) on [Mon Mar 21 16:05:05 2016] ***
+compiled with version: 4.2.1 Compatible Apple LLVM 7.0.2 (clang-700.1.81) on 07 March 2016 11:40:13
+os: Darwin-14.5.0 Darwin Kernel Version 14.5.0: Tue Sep  1 21:23:09 PDT 2015; root:xnu-2782.50.1~1/RELEASE_X86_64
+nodename: engine.local
+machine: x86_64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 4
+current working directory: /Users/engine/oto/server/otoserver
+detected binary path: /usr/local/bin/uwsgi
+chdir() to .
+*** WARNING: you are running uWSGI without its master process manager ***
+your processes number limit is 709
+your memory page size is 4096 bytes
+detected max file descriptor number: 256
+lock engine: OSX spinlocks
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to TCP address :8077 fd 3
+Python version: 2.7.10 (default, Jul 14 2015, 19:46:27)  [GCC 4.2.1 Compatible Apple LLVM 6.0 (clang-600.0.39)]
+*** Python threads support is disabled. You can enable it with --enable-threads ***
+Python main interpreter initialized at 0x7fbe6af011f0
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 291040 bytes (284 KB) for 4 cores
+*** Operational MODE: preforking ***
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x7fbe6af011f0 pid: 4315 (default app)
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI worker 1 (pid: 4315, cores: 1)
+spawned uWSGI worker 2 (pid: 4318, cores: 1)
+spawned uWSGI worker 3 (pid: 4319, cores: 1)
+spawned uWSGI worker 4 (pid: 4320, cores: 1)
+[pid: 4319|app: 0|req: 1/1] 192.168.101.68 () {32 vars in 501 bytes} [Mon Mar 21 16:08:25 2016] GET /oto/getshopList?lontitude=113.347906&latitude=23.131978& => generated 566 bytes in 356 msecs (HTTP/1.1 200) 2 headers in 88 bytes (2 switches on core 0)
+[pid: 4319|app: 0|req: 2/2] 192.168.101.68 () {32 vars in 496 bytes} [Mon Mar 21 16:09:27 2016] GET /oto//regist?userName=cheng&password=123456&userType=2& => generated 72 bytes in 68 msecs (HTTP/1.1 200) 2 headers in 88 bytes (2 switches on core 0)
+[pid: 4318|app: 0|req: 1/3] 192.168.101.68 () {32 vars in 501 bytes} [Mon Mar 21 16:10:37 2016] GET /oto/getshopList?lontitude=113.347392&latitude=23.131004& => generated 566 bytes in 215 msecs (HTTP/1.1 200) 2 headers in 88 bytes (1 switches on core 0)
+[pid: 4319|app: 0|req: 3/4] 192.168.101.68 () {32 vars in 501 bytes} [Mon Mar 21 16:12:12 2016] GET /oto/getshopList?lontitude=113.348692&latitude=23.132804& => generated 566 bytes in 7 msecs (HTTP/1.1 200) 2 headers in 88 bytes (1 switches on core 0)
+[pid: 4319|app: 0|req: 4/5] 192.168.101.68 () {32 vars in 501 bytes} [Mon Mar 21 16:23:51 2016] GET /oto/getshopList?lontitude=113.348745&latitude=23.132704& => generated 566 bytes in 4 msecs (HTTP/1.1 200) 2 headers in 88 bytes (1 switches on core 0)
+[pid: 4319|app: 0|req: 5/6] 192.168.101.68 () {32 vars in 501 bytes} [Mon Mar 21 16:25:34 2016] GET /oto/getshopList?lontitude=113.348745&latitude=23.132704& => generated 566 bytes in 3 msecs (HTTP/1.1 200) 2 headers in 88 bytes (1 switches on core 0)
+[pid: 4319|app: 0|req: 6/7] 192.168.101.68 () {32 vars in 501 bytes} [Mon Mar 21 16:30:08 2016] GET /oto/getshopList?lontitude=113.348743&latitude=23.132702& => generated 566 bytes in 8 msecs (HTTP/1.1 200) 2 headers in 88 bytes (1 switches on core 0)
+[pid: 4319|app: 0|req: 7/8] 192.168.101.68 () {32 vars in 501 bytes} [Mon Mar 21 16:32:37 2016] GET /oto/getshopList?lontitude=113.348745&latitude=23.132704& => generated 566 bytes in 4 msecs (HTTP/1.1 200) 2 headers in 88 bytes (1 switches on core 0)
+[pid: 4319|app: 0|req: 8/9] 192.168.101.68 () {32 vars in 501 bytes} [Mon Mar 21 16:46:37 2016] GET /oto/getshopList?lontitude=113.348745&latitude=23.132704& => generated 566 bytes in 3 msecs (HTTP/1.1 200) 2 headers in 88 bytes (2 switches on core 0)
