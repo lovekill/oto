@@ -115,6 +115,7 @@
                         android:layout_width="match_parent"
                         android:layout_weight="1"
                         android:inputType="number"
+                        android:id="@+id/maxAmount"
                         android:background="@drawable/textfield_multiline_activated_holo_dark"
                         android:layout_height="48dp"/>
 
@@ -129,6 +130,7 @@
                 <EditText
                         android:layout_width="match_parent"
                         android:layout_weight="1"
+                        android:id="@+id/subtrackPrice"
                         android:inputType="number"
                         android:background="@drawable/textfield_multiline_activated_holo_dark"
                         android:layout_height="48dp"/>

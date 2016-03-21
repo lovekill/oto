@@ -22,6 +22,12 @@ public class AddShopApi extends ParseJsonApi<ShopBean> {
     @HttpParam
     public String address ;
     @HttpParam
+    public float limitAmount ;
+    @HttpParam
+    public float maxAmount ;
+    @HttpParam
+    public float subtrackPrice ;
+    @HttpParam
     public double latitude ;
     @HttpParam
     public double lontitud ;
