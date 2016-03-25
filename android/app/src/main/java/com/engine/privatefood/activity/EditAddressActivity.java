@@ -44,8 +44,7 @@ public class EditAddressActivity extends BaseActivity {
         number= getIntent().getStringExtra("phoneNumber");
         if (name==null){
             actionBar.setTitle("新增地址");
-            Location location =new Location(this);
-            location.load();
+            Location location =Location.getInstance(this).load();
             address.setText(location.address);
         }else {
             actionBar.setTitle("编辑地址");

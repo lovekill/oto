@@ -9,7 +9,14 @@ import android.content.SharedPreferences;
 public class Location {
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
-    public Location(Context context) {
+    private static Location instance ;
+    public static Location getInstance(Context context){
+        if (instance==null){
+            instance=new Location(context);
+        }
+        return  instance;
+    }
+    private Location(Context context) {
         sharedPreferences = context.getSharedPreferences("location", 1);
         editor = sharedPreferences.edit();
     }
@@ -22,9 +29,10 @@ public class Location {
         editor.putString("lontitude",lontitude+"");
         editor.commit();
     }
-    public void load(){
+    public Location load(){
         this.address=sharedPreferences.getString("address","");
         this.latitude=Double.parseDouble(sharedPreferences.getString("latitude","0")) ;
         this.lontitude=Double.parseDouble(sharedPreferences.getString("lontitude","0")) ;
+        return this ;
     }
 }

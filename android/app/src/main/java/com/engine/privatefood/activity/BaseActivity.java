@@ -13,7 +13,9 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;
 import com.engine.privatefood.BusProvider;
+import com.engine.privatefood.UserManager;
 import com.engine.privatefood.api.FailResponse;
+import com.engine.privatefood.bean.UserBean;
 import com.engine.privatefood.fragment.BaseFragment;
 import com.squareup.otto.Subscribe;
 /**
@@ -22,10 +24,12 @@ import com.squareup.otto.Subscribe;
 public class BaseActivity extends AppCompatActivity{
     public String TAG = getClass().getSimpleName();
 
+    UserBean  userBean ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         BusProvider.getBus().register(this);
+        userBean= UserManager.getInstance(this).getUser();
     }
 
 

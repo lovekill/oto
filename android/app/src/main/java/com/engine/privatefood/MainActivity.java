@@ -76,8 +76,7 @@ public class MainActivity extends BaseActivity
     }
     private void loadData(){
         LoadShopApi api = new LoadShopApi();
-        Location location = new Location(this);
-        location.load();
+        Location location =Location.getInstance(this).load();
         api.latitude=location.latitude;
         api.lontitude=location.lontitude;
         api.execute();
@@ -227,7 +226,7 @@ public class MainActivity extends BaseActivity
         public void onReceiveLocation(BDLocation location) {
             //Receive Location
             if(location.getLocType()!=BDLocation.TypeCriteriaException) {
-                Location l = new Location(MainActivity.this);
+                Location l = Location.getInstance(MainActivity.this);
                 l.address = location.getAddrStr();
                 l.latitude = location.getLatitude();
                 l.lontitude = location.getLongitude();

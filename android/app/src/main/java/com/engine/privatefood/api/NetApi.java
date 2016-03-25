@@ -110,7 +110,7 @@ public abstract class NetApi extends AsyncTask<String, String, String> implement
             }
         }
         for (int i = 0; i < getFileList().size(); i++) {
-            builder.addFormDataPart("fileArray", "eee", RequestBody.create(MEDIA_TYPE_JPG, getFileList().get(0)));
+            builder.addFormDataPart("file"+i, "eee", RequestBody.create(MEDIA_TYPE_JPG, getFileList().get(0)));
         }
         RequestBody requestBody = builder.build();
         Request request = new Request.Builder()
