@@ -5,32 +5,32 @@ from django.shortcuts import render
 from django.core.files.base import ContentFile
 from django.http import HttpResponse
 from django.utils import timezone
+from django.views.decorators.csrf import csrf_exempt
 from .models import Shop,Person,OrderDetail,OtoOrder,Address,Menu
 from . import views
+from .forms import UploadFileForm,ShopForm
 import logging
 logger = logging.getLogger('django')
+@csrf_exempt
 def addShop(request):
-    print "eeeee"
-    return views.responseJson(0,"test")
-def addShopa(request):
-    logger.info("add shop begin")
-    for a,b in request.POST:
-        print a,b
-    shop = Shop()
+    userid =request.POST.get('userid')
+    user = views.getPersonById(userid)
+    if user is None:
+        return views.responseJson(1,"用户名为空")
+    shop = Shop(shopImage=request.FILES['file0'])
+    shop.bossName=user.userName
     shop.shopName=request.POST.get('shopName')
-    shop.bossName=request.POST.get('bossName')
     shop.phoneNumber=request.POST.get('phoneNumber')
     shop.address=request.POST.get('address')
     shop.limitAmount=request.POST.get('limitAmount')
     shomaxAmount=request.POST.get('maxAmount')
-#    file_content = ContentFile(request.FILES['file0'].read())  
-#    img = ImageStore(name = uuid.uuid1(), img =request.FILES['file0'])  
-#    img.save()
-#    shop.shopImage=img
-#    shop.save()
     shop.latitude=request.POST.get('latitude')
     shop.lontitude=request.POST.get('lontitude')
     shop.subtrackPrice=request.POST.get('subtrackPrice')
-#    shop.save()
-    return views.responseJson(0,"add success")
+    try:
+        shop.save()
+    except Exception as e:
+        print e.message
+    #shop.save()
+    return views.responseJson(0,shop.shopImage.__str__())
 
